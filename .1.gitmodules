@@ -1,0 +1,9 @@
+[submodule "plugins/BraftonWordpressPlugin-master"]
+	path = plugins/BraftonWordpressPlugin-master
+	url = https://github.com/braftonsupport/braftonwordpressplugin
+[submodule "themes/braftonium"]
+	path = themes/braftonium
+	url = https://github.com/braftonsupport/braftonium
+[submodule "plugins/braftonium-plugin"]
+	path = plugins/braftonium-plugin
+	url = https://github.com/BraftonSupport/braftonium-plugin

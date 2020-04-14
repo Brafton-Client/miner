@@ -1,0 +1,31 @@
+{
+    "name": "miner",
+    "account": "braftonclientsites",
+    "repo": "miner",
+    "global": {
+        "targetroot": "/var/www/html/design/brafton/${NAME}",
+        "group": "www",
+        "owner": "apache",
+        "url": "http://design.brafton.com/${NAME}",
+        "title": "",
+        "theme": "miner",
+        "parent": "",
+        "deploy_parent": "n",
+        "deployment_branch": "develop",
+        "deploy_plugins": "y",
+        "update_plugins": "n",
+        "package_site": "n",
+        "soft_launch_url": "",
+        "deploy_new_submodules": "n"
+    },
+    "deploy": [
+        {
+            "tag": "dev",
+            "branch": "${GLOBAL_DEPLOYMENT_BRANCH}",
+            "beforeinstall": "scripts/server/before.sh",
+            "afterinstall": "scripts/server/after.sh",
+            "source": "wp/wp-content/themes/${GLOBAL_THEME}",
+            "target": "${GLOBAL_TARGETROOT}/wp-content/themes/${GLOBAL_THEME}"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+
+version: 0.0
+os: linux
+files:
+    - source: /themes/
+      destination: /var/www/html/miner/wp-content/themes
+    - source: /plugins/
+      destination: /var/www/html/miner/wp-content/plugins
+hooks:
+    BeforeInstall:
+    - location: scripts/before.sh
+    AfterInstall:
+    - location: scripts/after.sh

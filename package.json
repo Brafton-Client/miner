@@ -1,0 +1,24 @@
+{
+  "name": "basebuild",
+  "version": "1.0.0",
+  "description": "Base For building new Wordpress sites for Brafton",
+  "main": "index.js",
+  "devDependencies": {
+    "openurl": "^1.1.1",
+    "prompt": "1.0.0",
+    "rimraf": "^2.6.2",
+    "run-git-command": "1.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "node ./scripts/local/setup.js",
+    "deploy": "node ./scripts/local/deploy.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://brafton@bitbucket.org/braftonclientsites/basebuild.git"
+  },
+  "author": "Deryk W. King",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/braftonclientsites/basebuild#readme"
+}

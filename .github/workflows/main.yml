@@ -1,0 +1,28 @@
+name: Build and Deploy
+
+on:
+    push:
+        branches:
+            - develop
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+        - uses: actions/checkout@v1
+        - name: Checkout submodules
+          uses: textbook/git-checkout-submodule-action@2.0.0
+        - name: Create artifact
+          run: cd ./wp/wp-content && zip -r site.zip .
+        - uses: actions/upload-artifact@v1
+          with:
+            name: site
+            path: ./wp/wp-content
+        - name: Push Zip to S3
+          run: aws s3 cp ./wp/wp-content/site.zip s3://designs-dev-pipeline-artifacts/sites/${{github.repository}}/site.zip
+          env:
+            AWS_S3_BUCKET: 'designs-dev-pipeline-artifacts'
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

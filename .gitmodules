@@ -1,0 +1,6 @@
+[submodule "wp/wp-content/plugins/braftonium-plugin"]
+	path = wp/wp-content/plugins/braftonium-plugin
+	url = git://github.com/BraftonSupport/braftonium-plugin
+[submodule "wp/wp-content/plugins/BraftonWordpressPlugin-master"]
+	path = wp/wp-content/plugins/BraftonWordpressPlugin-master
+	url = git://github.com/braftonsupport/braftonwordpressplugin

@@ -1,0 +1,12 @@
+.wp-cli
+.sass-cache
+node_modules
+/wp/*
+!/wp/wp-content
+wp/wp-content/index.php
+wp/wp-content/plugins/akismet
+wp/wp-content/plugins/hello.php
+wp/wp-content/plugins/index.php
+wp/wp-content/themes/index.php
+wp/wp-content/themes/twenty*
+db_data

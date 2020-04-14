@@ -22,7 +22,7 @@ if (isset($_POST['logging'])) {
 $cpnl_supported =  DUPX_U::$on_php_53_plus ? true : false;
 ?>
 
-<form id='s2-input-form' method="post" class="content-form"  data-parsley-validate="true" data-parsley-excluded="input[type=hidden], [disabled], :hidden">
+<form id='s2-input-form' method="post" class="content-form"  autocomplete="off" data-parsley-validate="true" data-parsley-excluded="input[type=hidden], [disabled], :hidden">
 
 	<?php if ($is_dbtest_mode) : ?>
 		<div class="hdr-main">Database Validation	</div>
@@ -30,7 +30,10 @@ $cpnl_supported =  DUPX_U::$on_php_53_plus ? true : false;
 		<div class="dupx-logfile-link">
 			<?php DUPX_View_Funcs::installerLogLink(); ?>
 		</div>
-		<div class="hdr-main">Step <span class="step">2</span> of 4: Install Database	</div>
+		<div class="hdr-main">
+			Step <span class="step">2</span> of 4: Install Database
+			<div class="sub-header">This step will install the database from the archive.</div>
+		</div>
 		<div class="s2-btngrp">
 			<input id="s2-basic-btn" type="button" value="Basic" class="active" onclick="DUPX.togglePanels('basic')" />
 			<input id="s2-cpnl-btn" type="button" value="cPanel" class="in-active" onclick="DUPX.togglePanels('cpanel')" />
@@ -100,11 +103,12 @@ $cpnl_supported =  DUPX_U::$on_php_53_plus ? true : false;
 <!-- =========================================
 VIEW: STEP 2 - AJAX RESULT
 Auto Posts to view.step3.php  -->
-<form id='s2-result-form' method="post" class="content-form" style="display:none">
+<form id='s2-result-form' method="post" class="content-form" style="display:none" autocomplete="off">
 
 	<div class="dupx-logfile-link"><?php DUPX_View_Funcs::installerLogLink(); ?></div>
 	<div class="hdr-main">
 		Step <span class="step">2</span> of 4: Install Database
+		<div class="sub-header">This step will install the database from the archive.</div>
 	</div>
 
 	<!--  POST PARAMS -->

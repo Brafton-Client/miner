@@ -18,7 +18,7 @@ class DUPX_HTTP
 		$html = "<form id='".DUPX_U::esc_attr($id)."' method='post' action='".DUPX_U::esc_url($url)."'>\n";
 		foreach ($data as $name => $value)
 		{
-			$html .= "<input type='hidden' name='".DUPX_U::esc_attr($name)."' value='".DUPX_U::esc_attr($value)."' />\n";
+			$html .= "<input type='hidden' name='".DUPX_U::esc_attr($name)."' value='".DUPX_U::esc_attr($value)."' autocomplete=\"off\" />\n";
 		}
 		$html .= "</form>\n";
 		$html .= "<script>$(document).ready(function() { $('#{$id}').submit(); });</script>";
@@ -43,7 +43,13 @@ class DUPX_HTTP
 			$isSecure = true;
 		}
 		$protocol = $isSecure ? 'https' : 'http';
-		$url = "{$protocol}://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+		// for ngrok url and Local by Flywheel Live URL
+		if (isset($_SERVER['HTTP_X_ORIGINAL_HOST'])) {
+			$host = $_SERVER['HTTP_X_ORIGINAL_HOST'];
+		} else {
+			$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME'];//WAS SERVER_NAME and caused problems on some boxes
+		}
+		$url = "{$protocol}://{$host}{$_SERVER['REQUEST_URI']}";
 		$url = ($show_query) ? $url : preg_replace('/\?.*/', '', $url);
 		return $url;
 	}

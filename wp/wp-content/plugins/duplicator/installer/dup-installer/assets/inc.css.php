@@ -35,7 +35,6 @@
     }
 
     select , option {
-        background-color: lightgray;
         color: black;
     }
     select {
@@ -44,9 +43,10 @@
     select option {
         padding: 2px 5px;
     }
-    select option[disabled] {
+    select option:disabled {
         text-decoration: line-through;
         cursor: not-allowed;
+        color: #A9A9A9;
     }
 
     select:disabled {background:#EBEBE4}
@@ -56,7 +56,7 @@
 	/* ============================
 	COMMON VIEWS
      ============================ */
-	div#content {border:1px solid #CDCDCD; width:750px; min-height:550px; margin:auto; margin-top:18px; border-radius:5px; box-shadow:0 8px 6px -6px #333; font-size:13px}
+	div#content {border:1px solid #CDCDCD; width:850px; min-height:550px; margin:auto; margin-top:18px; border-radius:5px; box-shadow:0 8px 6px -6px #333; font-size:13px}
 	div#content-inner {padding:10px 25px; min-height:550px}
 	form.content-form {min-height:550px; position:relative; line-height:17px}
 	div.logfile-link {float:right; font-weight:normal; font-size:11px; font-style:italic}
@@ -92,9 +92,10 @@
 	div.hdr-main {font-size:22px; padding:0 0 5px 0; border-bottom:1px solid #D3D3D3; font-weight:bold; margin:15px 0 20px 0;}
 	div.hdr-main span.step {color:#DB4B38}
 
+	div.sub-header {font-size:11px; font-style:italic; font-weight:normal; margin:5px 0 -1px 0}
 	div.hdr-sub1 {font-size:18px; margin-bottom:5px;border:1px solid #D3D3D3;padding:7px; background-color:#f9f9f9; font-weight:bold; border-radius:4px}
 	div.hdr-sub1 a {cursor:pointer; text-decoration: none !important}
-	div.hdr-sub1 i.fa {font-size:15px; display:inline-block; margin-right:5px; vertical-align:top}
+	div.hdr-sub1 i.fa {font-size:15px; display:inline-block; margin:2px 5px 0 0; vertical-align:top}
 	div.hdr-sub1-area {padding:5px}
 	div.hdr-sub2 {font-size:15px; padding:2px 2px 2px 0; font-weight:bold; margin-bottom:5px; border:none}
 	div.hdr-sub3 {font-size:15px; padding:2px 2px 2px 0; border-bottom:1px solid #D3D3D3; font-weight:bold; margin-bottom:5px;}
@@ -400,23 +401,30 @@
 	pre.s4-diff-viewer {line-height:11px}
 	div#s4-notice-reports div.section-content div.title {cursor:pointer}
 
-	/* ============================
-	STEP 5 HELP
-	============================	*/
+    /* ============================
+    STEP 5 HELP
+    ============================	*/
+    #body-help div#content {
+        width: 100%;
+        max-width: 1024px;
+    }
     div.help-target {float:right;}
-	div.help-target a {float:right; font-size:16px; color:#13659C}
-	div#main-help sup {font-size:11px; font-weight:normal; font-style:italic; color:blue}
-	div.help-online {text-align:center; font-size:18px; padding:10px 0 0 0; line-height:24px}
-	div.help {color:#555; font-style:italic; font-size:11px; padding:4px; border-top:1px solid #dfdfdf}
-	div.help-page fieldset {margin-bottom:25px}
+    div.help-target a {float:right; font-size:16px; color:#13659C}
+    div#main-help sup {font-size:11px; font-weight:normal; font-style:italic; color:blue}
+    div.help-online {text-align:center; font-size:18px; padding:10px 0 0 0; line-height:24px}
+    div.help {color:#555; font-style:italic; font-size:11px; padding:4px; border-top:1px solid #dfdfdf}
+    div.help-page fieldset {margin-bottom:25px}
     div#main-help {font-size:13px; line-height:17px}
-	div#main-help h3 {border-bottom:1px solid silver; padding:8px; margin:4px 0 8px 0; font-size:20px}
+    div#main-help h3 {border-bottom:1px solid silver; padding:8px; margin:4px 0 8px 0; font-size:20px}
     div#main-help span.step {color:#DB4B38}
-	table.help-opt {width: 100%; border: none; border-collapse: collapse;  margin:5px 0 0 0;}
-	table.help-opt td.section {background-color:#dfdfdf;}
-	table.help-opt td, th {padding:7px; border:1px solid silver;}
-	table.help-opt td:first-child {font-weight:bold; padding-right:10px; white-space:nowrap}
-	table.help-opt th {background: #333; color: #fff;border:1px solid #333; padding:3px}
+    .help-opt {width: 100%; border: none; border-collapse: collapse;  margin:5px 0 0 0;}
+    .help-opt .col-opt {
+        width: 250px;
+    }
+    .help-opt td.section {background-color:#dfdfdf;}
+    .help-opt td, .help-opt th {padding:15px 10px; border:1px solid silver;}
+    .help-opt td:first-child {font-weight:bold; padding-right:10px; white-space:nowrap}
+    .help-opt th {background: #333; color: #fff;border:1px solid #333 }
 
     #main-help section {
         border: 1px solid silver;

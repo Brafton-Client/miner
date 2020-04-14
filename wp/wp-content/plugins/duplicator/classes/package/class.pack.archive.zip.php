@@ -57,6 +57,7 @@ class DUP_Zip extends DUP_Archive
                 $error_message = "Cannot open zip file with PHP ZipArchive.";
                 $buildProgress->set_failed($error_message);
                 DUP_Log::Error($error_message, "Path location [".self::$zipPath."]", Dup_ErrorBehavior::LogOnly);
+                $archive->Package->setStatus(DUP_PackageStatus::ERROR);
                 return;
             }
             DUP_Log::Info("ARCHIVE DIR:  ".self::$compressDir);
@@ -79,10 +80,9 @@ class DUP_Zip extends DUP_Archive
                 DUP_Log::Info("SQL ADDED: ".basename(self::$sqlPath));
             } else {
                 $error_message = "Unable to add database.sql to archive.";
-
-                DUP_Log::Error($error_message, "SQL File Path [".self::$sqlath."]", Dup_ErrorBehavior::LogOnly);
-
+                DUP_Log::Error($error_message, "SQL File Path [".self::$sqlPath."]", Dup_ErrorBehavior::LogOnly);
                 $buildProgress->set_failed($error_message);
+                $archive->Package->setStatus(DUP_PackageStatus::ERROR);
                 return;
             }
             self::$zipArchive->close();
@@ -127,7 +127,7 @@ class DUP_Zip extends DUP_Archive
                     $localFileName = $archive->getLocalFilePath($file);
 
                     if (is_readable($file)) {
-                        if ($file_size < DUP_Constants::ZIP_STRING_LIMIT && self::$zipArchive->addFromString($localFileName, file_get_contents($file))) {
+                        if (defined('DUPLICATOR_ZIP_ARCHIVE_ADD_FROM_STR') && DUPLICATOR_ZIP_ARCHIVE_ADD_FROM_STR && $file_size < DUP_Constants::ZIP_STRING_LIMIT && self::$zipArchive->addFromString($localFileName, file_get_contents($file))) {
                             Dup_Log::Info("Adding {$file} to zip");
                             self::$limitItems++;
                             self::$countFiles++;
@@ -164,7 +164,7 @@ class DUP_Zip extends DUP_Archive
                     $localFileName = $archive->getLocalFilePath($file);
 
                     if (is_readable($file)) {
-                        if ($file_size < DUP_Constants::ZIP_STRING_LIMIT && self::$zipArchive->addFromString($localFileName, file_get_contents($file))) {
+                        if (defined('DUPLICATOR_ZIP_ARCHIVE_ADD_FROM_STR') && DUPLICATOR_ZIP_ARCHIVE_ADD_FROM_STR && $file_size < DUP_Constants::ZIP_STRING_LIMIT && self::$zipArchive->addFromString($localFileName, file_get_contents($file))) {
                             self::$countFiles++;
                         } elseif (self::$zipArchive->addFile($file, $localFileName)) {
                             self::$countFiles++;
@@ -207,14 +207,13 @@ class DUP_Zip extends DUP_Archive
                 DUP_Log::Info("COMPRESSION RESULT: '{$zipCloseResult}'");
             } else {
                 $error_message = "ZipArchive close failure.";
-
                 DUP_Log::Error($error_message,
 					"The ZipArchive engine is having issues zipping up the files on this server. For more details visit the FAQ\n"
 					. "I'm getting a ZipArchive close failure when building. How can I resolve this?\n"
 					. "[https://snapcreek.com/duplicator/docs/faqs-tech/#faq-package-165-q]",
                       Dup_ErrorBehavior::LogOnly);
-
                 $buildProgress->set_failed($error_message);
+                $archive->Package->setStatus(DUP_PackageStatus::ERROR);
                 return;
             }
 
@@ -232,6 +231,7 @@ class DUP_Zip extends DUP_Archive
             $error_message = "Runtime error in class.pack.archive.zip.php constructor.";
             DUP_Log::Error($error_message, "Exception: {$e}", Dup_ErrorBehavior::LogOnly);
             $buildProgress->set_failed($error_message);
+            $archive->Package->setStatus(DUP_PackageStatus::ERROR);
             return;
         }
     }

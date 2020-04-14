@@ -88,6 +88,10 @@ class DUPX_Boot
         require_once($GLOBALS['DUPX_INIT'].'/classes/utilities/class.u.notices.manager.php');
         require_once($GLOBALS['DUPX_INIT'].'/classes/utilities/class.u.html.php');
         require_once($GLOBALS['DUPX_INIT'].'/classes/config/class.constants.php');
+        require_once($GLOBALS['DUPX_INIT'].'/ctrls/ctrl.base.php');
+
+        DUPX_U::init();
+        DUPX_Constants::init();
     }
 
     public static function initArchiveAndLog()

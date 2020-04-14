@@ -5,8 +5,9 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 	$dbvar_maxtime  = is_null($dbvar_maxtime)  ? __("unknow", 'duplicator') : $dbvar_maxtime;
 	$dbvar_maxpacks = is_null($dbvar_maxpacks) ? __("unknow", 'duplicator') : $dbvar_maxpacks;
 
-	$space = @disk_total_space(DUPLICATOR_WPROOTPATH);
-	$space_free = @disk_free_space(DUPLICATOR_WPROOTPATH);
+	$abs_path = duplicator_get_abs_path();
+	$space = @disk_total_space($abs_path);
+	$space_free = @disk_free_space($abs_path);
 	$perc = @round((100/$space)*$space_free,2);
 	$mysqldumpPath = DUP_DB::getMySqlDumpPath();
 	$mysqlDumpSupport = ($mysqldumpPath) ? $mysqldumpPath : 'Path Not Found';
@@ -51,13 +52,16 @@ SERVER SETTINGS -->
 			<td><?php esc_html_e("Web Server", 'duplicator'); ?></td>
 			<td><?php echo esc_html($_SERVER['SERVER_SOFTWARE']); ?></td>
 		</tr>
+		<?php
+		$abs_path = duplicator_get_abs_path();
+		?>
 		<tr>
 			<td><?php esc_html_e("Root Path", 'duplicator'); ?></td>
-			<td><?php echo esc_html(DUPLICATOR_WPROOTPATH) ?></td>
+			<td><?php echo esc_html($abs_path); ?></td>
 		</tr>
 		<tr>
 			<td><?php esc_html_e("ABSPATH", 'duplicator'); ?></td>
-			<td><?php echo esc_html(ABSPATH); ?></td>
+			<td><?php echo esc_html($abs_path); ?></td>
 		</tr>
 		<tr>
 			<td><?php esc_html_e("Plugins Path", 'duplicator'); ?></td>
@@ -69,7 +73,16 @@ SERVER SETTINGS -->
 		</tr>
 		<tr>
 			<td><?php esc_html_e("Server IP", 'duplicator'); ?></td>
-			<td><?php echo esc_html($_SERVER['SERVER_ADDR']); ?></td>
+			<?php
+			if (isset($_SERVER['SERVER_ADDR'])) {
+				$server_address = $_SERVER['SERVER_ADDR'];
+			} elseif (isset($_SERVER['SERVER_NAME']) && function_exists('gethostbyname')) {
+				$server_address = gethostbyname($_SERVER['SERVER_NAME']);
+			} else {
+				$server_address = __("Can't detect", 'duplicator');
+			}
+			?>
+			<td><?php echo esc_html($server_address); ?></td>
 		</tr>
 		<tr>
 			<td><?php esc_html_e("Client IP", 'duplicator'); ?></td>

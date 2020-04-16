@@ -1,0 +1,9 @@
+.products {
+    display: flex;
+    justify-content: space-between;
+}
+.vendors {
+    color: #000;
+    background: #DEDEDE;
+    margin: 0 1em;
+}

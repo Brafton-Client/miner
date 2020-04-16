@@ -14,3 +14,9 @@ function vendor_shortcode() {
     include('templates/vendor-template.php');
     return ob_get_clean();
 }
+
+function vendor_scripts(){
+    wp_enqueue_style('vendors',plugin_dir_url(__FILE__).'css/vendors.css',array(), null);
+}
+
+add_action('wp_enqueue_scripts', 'vendor_scripts');

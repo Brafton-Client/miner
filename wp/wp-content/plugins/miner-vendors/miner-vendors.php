@@ -50,13 +50,15 @@ function get_vendors($data){
         while ( $vendor_query->have_posts() ) {
             $vendor_query->the_post();
             $products = get_the_terms(get_the_ID(), 'vendor_product');
-            if(!isset($all_vendors[$products[0]->term_id])){
-                $all_vendors[$products[0]->term_id] = array(); 
+            $vendor_image = get_the_post_thumbnail_url();
+            foreach($products as $product){
+                if(!isset($all_vendors[$product->term_id])){
+                    $all_vendors[$product->term_id] = array(); 
+                }
+                $all_vendors[$product->term_id][] = array( 
+                    'vendor_image'  => $vendor_image
+                );
             }
-            $all_vendors[$products[0]->term_id][] = array( 
-                'vendor_image'  => get_the_post_thumbnail_url()
-            );
-      
         }
     }
    echo json_encode($all_vendors);

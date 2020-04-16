@@ -39,10 +39,12 @@ $vendor_cities = array_map('getCities',$cities);
 </select>
 <div class="chart">
 		<div class="products">
-			<?php foreach($products as $product) { ?>
+			<?php foreach($products as $product) {
+				
+				?>
 				<div class="chart-column">
-					<div class="product"><?php echo $product->name ?></div>
-					<div class="vendors">
+					<div class="product" id="product-<?php echo $product->term_id; ?>"><?php echo $product->name ?></div>
+					<div class="vendors" id="product-<?php echo $product->term_id; ?>">
 					test
 					</div>
 				</div>

@@ -3,6 +3,15 @@
 * set up post types and other functions
 */
 
+    require_once(ABSPATH . 'wp-admin/includes/class-walker-category-checklist.php');
+    class Miner_Walker_Category_Radioset extends Walker_Category_Checklist {
+        public function start_el(&$output, $category, $depth = 0, $args = array(), $id = 0) {
+            $parent_output = '';
+            parent::start_el($parent_output, $category, $depth, $args, $id);
+            $output .= str_replace('checkbox', 'radio', $parent_output);
+        }
+    }
+
 
 /**
  * Register the "vendor" custom post type
@@ -58,3 +67,14 @@ function register_vendor_taxonomies() {
 
 }
 add_action( 'init', 'register_vendor_taxonomies' );
+
+add_filter(
+    'wp_terms_checklist_args'
+    , function($args) {
+        if (isset($args['taxonomy']) && $args['taxonomy'] == "vendor_product") {
+            $args['walker'] = new \Miner_Walker_Category_Radioset;
+            $args['checked_ontop'] = false;
+        }
+        return $args;
+    }
+);

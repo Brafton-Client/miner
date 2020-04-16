@@ -40,10 +40,13 @@ $vendor_cities = array_map('getCities',$cities);
 <div class="chart">
 		<div class="products">
 			<?php foreach($products as $product) {
-				
 				?>
 				<div class="chart-column">
-					<div class="product" id="product-<?php echo $product->term_id; ?>"><?php echo $product->name ?></div>
+					<div class="product">
+						<!-- alternate route needed for assigning image to product id, need to back-out ACF function call! -->
+						<img src="<?php echo get_field('product_image', 'category_' .$product->term_id) ?>" alt="<?php echo $product->term_id ?>" />
+						<h4><?php echo $product->name ?></h4>
+					</div>
 					<div class="vendors" id="product-<?php echo $product->term_id; ?>">
 					test
 					</div>

@@ -11,5 +11,5 @@ then
     chown -R ${GLOBAL_OWNER}:${GLOBAL_GROUP} /var/www/html/${NAME}
     chmod -R 775 /var/www/html/${NAME}
 else
- 
+    echo 1;
 fi

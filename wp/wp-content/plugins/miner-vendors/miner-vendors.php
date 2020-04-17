@@ -67,4 +67,4 @@ function get_vendors($data){
 }
 
 add_action("wp_ajax_get_vendors", "get_vendors");
-add_action("wp_ajax_get_vendors", "get_vendors");
+add_action("wp_ajax_nopriv_get_vendors", "get_vendors");

@@ -48,7 +48,31 @@ $vendor_cities = array_map('getCities',$cities);
 						<h4><?php echo $product->name ?></h4>
 					</div>
 					<div class="vendors" id="product-<?php echo $product->term_id; ?>">
-					
+						<?php 
+							$vendor_query = new WP_Query(
+									array(
+										'post_type' =>'vendor',
+										'post_status' => 'publish',
+										'posts_per_page' => -1, 
+										'tax_query'	=> array( 
+											array( 
+												'taxonomy'	=> 'vendor_product',
+												'field'		=> 'term_id',
+												'terms'		=> $product->term_id
+											)
+										)
+								)
+							);
+							if ( $vendor_query->have_posts() ) {
+
+								// Load posts loop.
+									while ( $vendor_query->have_posts() ) {
+										$vendor_query->the_post();
+										the_post_thumbnail();
+									}
+
+							}
+						?>
 					</div>
 				</div>
 			<?php } ?>

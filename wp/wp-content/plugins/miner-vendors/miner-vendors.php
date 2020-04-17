@@ -8,7 +8,7 @@
 include 'util/functions.php';
 
 add_shortcode( 'render_vendors', 'vendor_shortcode' );
-  
+define("MINER_PLUGIN_URL", plugin_dir_url(__FILE__));
 function vendor_shortcode() {
     ob_start();
     include('templates/vendor-template.php');
@@ -16,8 +16,8 @@ function vendor_shortcode() {
 }
 
 function vendor_scripts(){
-    wp_enqueue_style('vendors',plugin_dir_url(__FILE__).'css/vendors.css',array(), null);
-    wp_enqueue_script('vendor-scripts', plugin_dir_url(__FILE__).'js/vendor-display.js',array('jquery'), null);
+    wp_enqueue_style('vendors',MINER_PLUGIN_URL.'css/vendors.css',array(), null);
+    wp_enqueue_script('vendor-scripts', MINER_PLUGIN_URL.'js/vendor-display.js',array('jquery'), null);
 
     wp_localize_script( 'vendor-scripts', 'miner_ajax',
             array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );

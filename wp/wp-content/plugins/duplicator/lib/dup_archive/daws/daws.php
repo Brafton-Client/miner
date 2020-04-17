@@ -131,7 +131,7 @@ class DAWS
                         $expandState->filteredFiles = $filteredFiles;
                         $expandState->fileRenames = $fileRenames;
                         $expandState->fileModeOverride = 0644;
-                        $expandState->directoryModeOverride = 0755;
+                        $expandState->directoryModeOverride = 'u+rwx';
 
 						$expandState->save();
 					}
@@ -228,7 +228,9 @@ class DAWS
                 $retVal->pass = true;
                 $retVal->status = $this->getStatus($expandState);
             } else if ($action == 'cancel') {
-                DupLiteSnapLibIOU::touch(DAWSConstants::$PROCESS_CANCEL_FILEPATH);
+                if (!DupLiteSnapLibIOU::touch(DAWSConstants::$PROCESS_CANCEL_FILEPATH)) {
+                    throw new Exception("Couldn't update time on ".DAWSConstants::$PROCESS_CANCEL_FILEPATH);
+                }
                 $retVal->pass = true;
             } else {
                 throw new Exception('Unknown command.');
@@ -247,7 +249,7 @@ class DAWS
 
 		DupLiteSnapLibLogger::logObject("before json encode retval", $retVal);
 
-		$jsonRetVal = DupLiteSnapLibUtil::wp_json_encode($retVal);
+		$jsonRetVal = DupLiteSnapJsonU::wp_json_encode($retVal);
 		DupLiteSnapLibLogger::logObject("json encoded retval", $jsonRetVal);
         echo $jsonRetVal;
     }

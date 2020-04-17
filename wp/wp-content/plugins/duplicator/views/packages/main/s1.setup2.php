@@ -54,7 +54,7 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 	div.secure-pass-area {}
 	label.secure-pass-lbl {display:inline-block; width:125px}
 	div#dup-pass-toggle {position: relative; margin:8px 0 0 0; width:243px}
-	input#secure-pass {border-radius:4px 0 0 4px; width:220px; height: 23px; margin:0}
+	input#secure-pass {border-radius:4px 0 0 4px; width:217px; height: 23px; min-height: auto; margin:0; padding: 0 4px;}
 	button.pass-toggle {height: 23px; width: 27px; position:absolute; top:0px; right:0px; border:1px solid silver; border-radius:0 4px 4px 0; cursor:pointer}
 	
 	/*TABS*/
@@ -189,7 +189,7 @@ ARCHIVE -->
 							?>
 						</label>
 						<div class='dup-quick-links'>
-							<a href="javascript:void(0)" onclick="Duplicator.Pack.AddExcludePath('<?php echo rtrim(DUPLICATOR_WPROOTPATH, '/'); ?>')">[<?php esc_html_e("root path", 'duplicator') ?>]</a>
+							<a href="javascript:void(0)" onclick="Duplicator.Pack.AddExcludePath('<?php echo duplicator_get_abs_path(); ?>')">[<?php esc_html_e("root path", 'duplicator') ?>]</a>
 							<a href="javascript:void(0)" onclick="Duplicator.Pack.AddExcludePath('<?php echo rtrim($upload_dir, '/'); ?>')">[<?php esc_html_e("wp-uploads", 'duplicator') ?>]</a>
 							<a href="javascript:void(0)" onclick="Duplicator.Pack.AddExcludePath('<?php echo DUP_Util::safePath(WP_CONTENT_DIR); ?>/cache')">[<?php esc_html_e("cache", 'duplicator') ?>]</a>
 							<a href="javascript:void(0)" onclick="jQuery('#filter-dirs').val('')"><?php esc_html_e("(clear)", 'duplicator') ?></a>
@@ -211,7 +211,7 @@ ARCHIVE -->
 							?>
 						</label>
 						<div class='dup-quick-links'>
-							<a href="javascript:void(0)" onclick="Duplicator.Pack.AddExcludeFilePath('<?php echo rtrim(DUPLICATOR_WPROOTPATH, '/'); ?>')"><?php esc_html_e("(file path)", 'duplicator') ?></a>
+							<a href="javascript:void(0)" onclick="Duplicator.Pack.AddExcludeFilePath('<?php echo duplicator_get_abs_path(); ?>')"><?php esc_html_e("(file path)", 'duplicator') ?></a>
 							<a href="javascript:void(0)" onclick="jQuery('#filter-files').val('')"><?php esc_html_e("(clear)", 'duplicator') ?></a>
 						</div>
 						<textarea name="filter-files" id="filter-files" placeholder="/full_path/exclude_file_1.ext;/full_path/exclude_file2.ext"><?php echo str_replace(";", ";\n", esc_textarea($Package->Archive->FilterFiles)) ?></textarea>
@@ -285,29 +285,30 @@ ARCHIVE -->
 
 						echo '<table id="dup-dbtables"><tr><td valign="top">';
 						foreach ($tables as $table) {
+							if (DUP_Util::isTableExists($table[0])) {
+								if (DUP_Util::isWPCoreTable($table[0])) {
+									$core_css = 'core-table';
+									$core_note = '*';
+								} else {
+									$core_css = 'non-core-table';
+									$core_note = '';
+								}
 
-							if (DUP_Util::isWPCoreTable($table[0])) {
-								$core_css = 'core-table';
-								$core_note = '*';
-							} else {
-								$core_css = 'non-core-table';
-								$core_note = '';
-							}
-
-							if (in_array($table[0], $tableList)) {
-								$checked = 'checked="checked"';
-								$css	 = 'text-decoration:line-through';
-							} else {
-								$checked = '';
-								$css	 = '';
-							}
-							echo  "<label for='dbtables-{$table[0]}' style='{$css}' class='{$core_css}'>"
-								. "<input class='checkbox dbtable' $checked type='checkbox' name='dbtables[]' id='dbtables-{$table[0]}' value='{$table[0]}' onclick='Duplicator.Pack.ExcludeTable(this)' />"
-								. "&nbsp;{$table[0]}{$core_note}</label><br />";
-							$counter++;
-							if ($next_row <= $counter) {
-								echo '</td><td valign="top">';
-								$counter = 0;
+								if (in_array($table[0], $tableList)) {
+									$checked = 'checked="checked"';
+									$css	 = 'text-decoration:line-through';
+								} else {
+									$checked = '';
+									$css	 = '';
+								}
+								echo  "<label for='dbtables-{$table[0]}' style='{$css}' class='{$core_css}'>"
+									. "<input class='checkbox dbtable' $checked type='checkbox' name='dbtables[]' id='dbtables-{$table[0]}' value='{$table[0]}' onclick='Duplicator.Pack.ExcludeTable(this)' />"
+									. "&nbsp;{$table[0]}{$core_note}</label><br />";
+								$counter++;
+								if ($next_row <= $counter) {
+									echo '</td><td valign="top">';
+									$counter = 0;
+								}
 							}
 						}
 						echo '</td></tr></table>';
@@ -663,5 +664,7 @@ jQuery(document).ready(function ($)
 	Duplicator.Pack.ToggleDBFilters();
 	Duplicator.Pack.ExportOnlyDB();
 	Duplicator.Pack.EnableInstallerPassword();
+	$('input#package-name').focus().select();
+
 });
 </script>

@@ -21,11 +21,11 @@ class DUP_Settings
 	/**
 	 *  Class used to manage all the settings for the plugin
 	 */
-	static function init()
+	public static function init()
 	{
 		self::$Data = get_option(self::OPT_SETTINGS);
 		//when the plugin updated, this will be true
-		if (empty(self::$Data) || self::$Version > self::$Data['version']) {
+		if (empty(self::$Data) || empty(self::$Data['version']) || self::$Version > self::$Data['version']) {
 			self::SetDefaults();
 		}
 	}
@@ -89,7 +89,7 @@ class DUP_Settings
 	public static function SetDefaults()
 	{
 		$defaults	 = self::GetAllDefaults();
-		self::$Data	 = $defaults;
+		self::$Data	 = apply_filters('duplicator_defaults_settings', $defaults);
 		return self::Save();
 	}
 
@@ -130,10 +130,19 @@ class DUP_Settings
 		//Flag for .htaccess file
 		$default['storage_htaccess_off'] = isset(self::$Data['storage_htaccess_off']) ? self::$Data['storage_htaccess_off'] : false;
 		// Initial archive build mode
-		$default['archive_build_mode'] = isset(self::$Data['archive_build_mode']) ? self::$Data['archive_build_mode'] : DUP_Archive_Build_Mode::ZipArchive;
+		if (isset(self::$Data['archive_build_mode'])) {
+			$default['archive_build_mode'] = self::$Data['archive_build_mode'];
+		} else {
+			$is_ziparchive_available = apply_filters('duplicator_is_ziparchive_available', class_exists('ZipArchive'));
+			$default['archive_build_mode'] = $is_ziparchive_available ? DUP_Archive_Build_Mode::ZipArchive : DUP_Archive_Build_Mode::DupArchive;
+		}
+
+		// $default['package_zip_flush'] = apply_filters('duplicator_package_zip_flush_default_setting', '0');
 
         //Skip scan archive
 		$default['skip_archive_scan']		 = isset(self::$Data['skip_archive_scan']) ? self::$Data['skip_archive_scan'] : false;
+		$default['unhook_third_party_js']	 = isset(self::$Data['unhook_third_party_js']) ? self::$Data['unhook_third_party_js'] : false;
+		$default['unhook_third_party_css']	 = isset(self::$Data['unhook_third_party_css']) ? self::$Data['unhook_third_party_css'] : false;
 
 		$default['active_package_id'] = -1;
 
@@ -149,6 +158,3 @@ class DUP_Settings
         return $ui_create_frmt;
     }
 }
-//Init Class
-DUP_Settings::init();
-?>

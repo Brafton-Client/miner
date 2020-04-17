@@ -3,13 +3,13 @@
   Plugin Name: Duplicator
   Plugin URI: https://snapcreek.com/duplicator/duplicator-free/
   Description: Migrate and backup a copy of your WordPress files and database. Duplicate and move a site from one location to another quickly.
-  Version: 1.3.14
+  Version: 1.3.28
   Author: Snap Creek
   Author URI: http://www.snapcreek.com/duplicator/
   Text Domain: duplicator
   License: GPLv2 or later
 
-  Copyright 2011-2017  SnapCreek LLC
+  Copyright 2011-2020  SnapCreek LLC
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2, as
@@ -24,9 +24,6 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-  SOURCE CONTRIBUTORS:
-  David Coveney of Interconnect IT Ltd
-  https://github.com/interconnectit/Search-Replace-DB/
   ================================================================================ */
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 if ( !defined('DUPXABSPATH') ) {
@@ -36,6 +33,7 @@ if ( !defined('DUPXABSPATH') ) {
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
+require_once("helper.php");
 require_once("define.php");
 
 if (!function_exists('sanitize_textarea_field')) {
@@ -155,9 +153,27 @@ if (!function_exists('wp_normalize_path')) {
 
 if (is_admin() == true) 
 {
-    require_once 'deactivation.php';
+    if (defined('DUPLICATOR_DEACTIVATION_FEEDBACK') && DUPLICATOR_DEACTIVATION_FEEDBACK) {
+        require_once 'deactivation.php';
+    }
     require_once 'lib/snaplib/snaplib.all.php';
     require_once 'classes/class.constants.php';
+    $isWPEngineHost = apply_filters('duplicator_wp_engine_host_check', file_exists(WPMU_PLUGIN_DIR.'/wpengine-common/mu-plugin.php'));
+    if ($isWPEngineHost) {
+        require_once 'classes/host/class.wpengine.host.php';
+    }
+
+    // gethostname() only present in PHP 5.3
+    if(version_compare(PHP_VERSION, '5.3.0') >= 0) {
+        $hostName = gethostname();
+        $goDaddyHostNameSuffix = '.secureserver.net';
+        $lenGoDaddyHostNameSuffix = strlen($goDaddyHostNameSuffix);
+        $isGoDaddyHost = apply_filters('duplicator_godaddy_host_check', (false !== $hostName && substr($hostName, - $lenGoDaddyHostNameSuffix) === $goDaddyHostNameSuffix));
+        if ($isGoDaddyHost) {
+            require_once 'classes/host/class.godaddy.host.php';        
+        }
+    }
+
     require_once 'classes/class.settings.php';
     require_once 'classes/class.logging.php';    
     require_once 'classes/utilities/class.u.php';
@@ -168,13 +184,19 @@ if (is_admin() == true)
 	require_once 'classes/ui/class.ui.viewstate.php';
 	require_once 'classes/ui/class.ui.notice.php';
     require_once 'classes/package/class.pack.php';
-	require_once 'views/packages/screen.php';
-	 
+    require_once 'views/packages/screen.php';
+
     //Controllers
 	require_once 'ctrls/ctrl.package.php';
 	require_once 'ctrls/ctrl.tools.php';
 	require_once 'ctrls/ctrl.ui.php';
     require_once 'ctrls/class.web.services.php';
+    
+    //Init Class
+    DUP_Settings::init();
+    DUP_Log::Init();
+    DUP_Util::init();
+    DUP_DB::init();
 
 	/** ========================================================
 	 * ACTIVATE/DEACTIVE/UPDATE HOOKS
@@ -206,12 +228,15 @@ if (is_admin() == true)
 			   status INT(11) NOT NULL,
 			   created DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 			   owner VARCHAR(60) NOT NULL,
-			   package MEDIUMBLOB NOT NULL,
+			   package LONGTEXT NOT NULL,
 			   PRIMARY KEY  (id),
 			   KEY hash (hash))";
 
-            require_once(DUPLICATOR_WPROOTPATH . 'wp-admin/includes/upgrade.php');
+            $abs_path = duplicator_get_abs_path();
+            require_once($abs_path . '/wp-admin/includes/upgrade.php');
             @dbDelta($sql);
+            
+            DupLiteSnapLibIOU::chmod(DUPLICATOR_SSDIR_PATH, 'u+rwx,go+rx');
         }
 
         //WordPress Options Hooks
@@ -231,6 +256,7 @@ if (is_admin() == true)
 	{
         if (DUPLICATOR_VERSION != get_option("duplicator_version_plugin")) {
             duplicator_activate();
+            // $snapShotDirPerm = substr(sprintf("%o", fileperms(DUPLICATOR_SSDIR_PATH)),-4);
         }
 		load_plugin_textdomain( 'duplicator' );
     }
@@ -259,10 +285,12 @@ if (is_admin() == true)
     }
     add_action('plugins_loaded', 'duplicator_load_textdomain');
 
-    add_action('admin_init',		'duplicator_init');
+    add_action('admin_init',		'duplicator_admin_init');
     add_action('admin_menu',		'duplicator_menu');
     add_action('admin_enqueue_scripts', 'duplicator_admin_enqueue_scripts' );
-	add_action('admin_notices',		array('DUP_UI_Notice', 'showReservedFilesNotice'));
+    add_action('admin_notices',		array('DUP_UI_Notice', 'showReservedFilesNotice'));
+    add_action('admin_notices',		array('DUP_UI_Notice', 'installAutoDeactivatePlugins'));
+    add_action('admin_notices',		array('DUP_UI_Notice', 'showFeedBackNotice'));
 	
 	//CTRL ACTIONS
     DUP_Web_Services::init();
@@ -271,6 +299,7 @@ if (is_admin() == true)
     add_action('wp_ajax_duplicator_package_build',				'duplicator_package_build');
     add_action('wp_ajax_duplicator_package_delete',				'duplicator_package_delete');
     add_action('wp_ajax_duplicator_duparchive_package_build',	'duplicator_duparchive_package_build');
+    add_action('wp_ajax_duplicator_set_admin_notice_viewed',    'duplicator_set_admin_notice_viewed');
 
 	$GLOBALS['CTRLS_DUP_CTRL_UI']		= new DUP_CTRL_UI();
 	$GLOBALS['CTRLS_DUP_CTRL_Tools']	= new DUP_CTRL_Tools();
@@ -295,7 +324,7 @@ if (is_admin() == true)
      * @access global
      * @return null
      */
-    function duplicator_init()
+    function duplicator_admin_init()
 	{
         /* CSS */
         wp_register_style('dup-jquery-ui', DUPLICATOR_PLUGIN_URL . 'assets/css/jquery-ui.css', null, "1.11.2");
@@ -313,6 +342,12 @@ if (is_admin() == true)
 
         // Clean tmp folder
         DUP_Package::not_active_files_tmp_cleanup();
+
+        $unhook_third_party_js  = DUP_Settings::Get('unhook_third_party_js');
+        $unhook_third_party_css = DUP_Settings::Get('unhook_third_party_css');
+        if ($unhook_third_party_js || $unhook_third_party_css) {
+            add_action('admin_enqueue_scripts', 'duplicator_unhook_third_party_assets', 99999, 1);
+        }
     }
 
     /**
@@ -378,9 +413,19 @@ if (is_admin() == true)
 		$lang_txt = esc_html__('Settings', 'duplicator');
         $page_settings = add_submenu_page('duplicator', $lang_txt, $lang_txt, $perms, 'duplicator-settings', 'duplicator_get_menu');
 
-		$perms = 'manage_options';
+        $perms = 'manage_options';
+        $admin_color = get_user_option('admin_color');
+        $orange_for_admin_colors = array(
+                                            'fresh',
+                                            'coffee',
+                                            'ectoplasm',
+                                            'midnight'
+                                        );
+        $style = in_array($admin_color, $orange_for_admin_colors) 
+                    ? 'style="color:#f18500"'
+                    : '';
 		$lang_txt = esc_html__('Go Pro!', 'duplicator');
-		$go_pro_link = '<span style="color:#f18500">' . $lang_txt . '</span>';
+		$go_pro_link = '<span '.$style.'>' . $lang_txt . '</span>';
         $perms = apply_filters($wpfront_caps_translator, $perms);
         $page_gopro = add_submenu_page('duplicator', $go_pro_link, $go_pro_link, $perms, 'duplicator-gopro', 'duplicator_get_menu');
 
@@ -487,5 +532,72 @@ if (is_admin() == true)
 		exit;
     }
 
+    if (!function_exists('duplicator_unhook_third_party_assets')) {
+        /**
+         * Remove all external styles and scripts coming from other plugins
+         * which may cause compatibility issue, especially with React
+         *
+         * @return void
+         */
+        function duplicator_unhook_third_party_assets($hook)
+        {
+            /*
+            $hook values in duplicator admin pages:
+                toplevel_page_duplicator
+                duplicator_page_duplicator-tools
+                duplicator_page_duplicator-settings
+                duplicator_page_duplicator-gopro
+            */
+            if (strpos($hook, 'duplicator') !== false && strpos($hook, 'duplicator-pro') === false) {
+                $unhook_third_party_js  = DUP_Settings::Get('unhook_third_party_js');
+                $unhook_third_party_css = DUP_Settings::Get('unhook_third_party_css');
+                $assets = array();
+                if ($unhook_third_party_css)  $assets['styles'] = wp_styles();
+                if ($unhook_third_party_js)  $assets['scripts'] = wp_scripts();
+                foreach ($assets as $type => $asset) {
+                    foreach ($asset->registered as $handle => $dep) {
+                        $src = $dep->src;
+                        // test if the src is coming from /wp-admin/ or /wp-includes/ or /wp-fsqm-pro/.
+                        if (
+                            is_string($src) && // For some built-ins, $src is true|false
+                            strpos($src, 'wp-admin') === false &&
+                            strpos($src, 'wp-include') === false &&
+                            // things below are specific to your plugin, so change them
+							strpos($src, 'duplicator') === false &&
+                            strpos($src, 'woocommerce') === false &&
+                            strpos($src, 'jetpack') === false &&
+                            strpos($src, 'debug-bar') === false
+                        ) {
+                                'scripts' === $type
+                                    ? wp_dequeue_script($handle)
+                                    : wp_dequeue_style($handle);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (!function_exists('duplicator_set_admin_notice_viewed')) {
+        function duplicator_set_admin_notice_viewed() {
+            if ( empty( $_REQUEST['notice_id'] ) ) {
+                wp_die();
+            }
+    
+            $notices = get_user_meta(get_current_user_id(), DUPLICATOR_ADMIN_NOTICES_USER_META_KEY, true);
+            if ( empty( $notices ) ) {
+                $notices = array();
+            }
+    
+            $notices[ $_REQUEST['notice_id'] ] = 'true';
+            update_user_meta( get_current_user_id(), DUPLICATOR_ADMIN_NOTICES_USER_META_KEY, $notices);
+    
+            if ( ! wp_doing_ajax() ) {
+                wp_safe_redirect( admin_url() );
+                die;
+            }
+    
+            wp_die();
+        }
+    }
 }
-?>

@@ -46,8 +46,8 @@ class DUPX_U
     {
         array_push($GLOBALS['REPLACE_LIST'], array('search' => $search, 'replace' => $replace));
 
-        $search_json  = str_replace('"', "", DupLiteSnapLibUtil::wp_json_encode($search));
-        $replace_json = str_replace('"', "", DupLiteSnapLibUtil::wp_json_encode($replace));
+        $search_json  = str_replace('"', "", DupLiteSnapJsonU::wp_json_encode($search));
+        $replace_json = str_replace('"', "", DupLiteSnapJsonU::wp_json_encode($replace));
 
         if ($search != $search_json) {
             array_push($GLOBALS['REPLACE_LIST'], array('search' => $search_json, 'replace' => $replace_json));
@@ -122,13 +122,11 @@ class DUPX_U
 		}
 
 		// If the destination directory does not exist create it
-		if (!is_dir($dest)) {
-			if (!mkdir($dest)) {
-				// If the destination directory could not be created stop processing
-				return false;
-			}
-		}
-
+        if (!DupLiteSnapLibIOU::dirWriteCheckOrMkdir($dest, 'u+rwx')) {
+            // If the destination directory could not be created stop processing
+            return false;
+        }
+		
 		// Open the source directory to read in files
 		$iterator = new DirectoryIterator($src);
 
@@ -654,6 +652,23 @@ class DUPX_U
         return (version_compare(PHP_VERSION, $version) >= 0);
 	}
 
+	/**
+     * Checks if ssl is enabled
+     * @return bool
+     */
+    public static function is_ssl()
+    {
+        if ( isset($_SERVER['HTTPS']) ) {
+            if ( 'on' == strtolower($_SERVER['HTTPS']) )
+                return true;
+            if ( '1' == $_SERVER['HTTPS'] )
+                return true;
+        } elseif ( isset($_SERVER['SERVER_PORT']) && ( '443' == $_SERVER['SERVER_PORT'] ) ) {
+            return true;
+        }
+        
+        return false;
+	}
 
     /**
      * @param $url string The URL whichs domain you want to get
@@ -689,7 +704,7 @@ class DUPX_U
 	 * @return string
 	 */
 	public static function esc_html( $text ) {
-		$safe_text = self::wp_check_invalid_utf8( $text );
+		$safe_text = DupLiteSnapJsonU::wp_check_invalid_utf8( $text );
 		$safe_text = self::_wp_specialchars( $safe_text, ENT_QUOTES );
 		/**
 		 * Filters a string cleaned and escaped for output in HTML.
@@ -715,7 +730,7 @@ class DUPX_U
 	 * @return string Escaped text.
 	 */
 	public static function esc_js( $text ) {
-		$safe_text = self::wp_check_invalid_utf8( $text );
+		$safe_text = DupLiteSnapJsonU::wp_check_invalid_utf8( $text );
 		$safe_text = self::_wp_specialchars( $safe_text, ENT_COMPAT );
 		$safe_text = preg_replace( '/&#(x)?0*(?(1)27|39);?/i', "'", stripslashes( $safe_text ) );
 		$safe_text = str_replace( "\r", '', $safe_text );
@@ -739,7 +754,7 @@ class DUPX_U
 	 * @return string
 	 */
 	public static function esc_attr( $text ) {
-		$safe_text = self::wp_check_invalid_utf8( $text );
+		$safe_text = DupLiteSnapJsonU::wp_check_invalid_utf8( $text );
 		$safe_text = self::_wp_specialchars( $safe_text, ENT_QUOTES );
 		/**
 		 * Filters a string cleaned and escaped for output in an HTML attribute.
@@ -929,56 +944,6 @@ class DUPX_U
 	}
 
 	/**
-	 * Checks for invalid UTF8 in a string.
-	 *
-	 * @staticvar bool $is_utf8
-	 * @staticvar bool $utf8_pcre
-	 *
-	 * @param string  $string The text which is to be checked.
-	 * @param bool    $strip Optional. Whether to attempt to strip out invalid UTF8. Default is false.
-	 * @return string The checked text.
-	 */
-	public static function wp_check_invalid_utf8( $string, $strip = false ) {
-		$string = (string) $string;
-
-		if ( 0 === strlen( $string ) ) {
-			return '';
-		}
-
-		// Store the site charset as a static to avoid multiple calls to get_option()
-		static $is_utf8 = null;
-		if ( ! isset( $is_utf8 ) ) {
-			// $is_utf8 = in_array( get_option( 'blog_charset' ), array( 'utf8', 'utf-8', 'UTF8', 'UTF-8' ) );
-			$is_utf8 = true;
-		}
-		if ( ! $is_utf8 ) {
-			return $string;
-		}
-
-		// Check for support for utf8 in the installed PCRE library once and store the result in a static
-		static $utf8_pcre = null;
-		if ( ! isset( $utf8_pcre ) ) {
-			$utf8_pcre = @preg_match( '/^./u', 'a' );
-		}
-		// We can't demand utf8 in the PCRE installation, so just return the string in those cases
-		if ( !$utf8_pcre ) {
-			return $string;
-		}
-
-		// preg_match fails when it encounters invalid UTF8 in $string
-		if ( 1 === @preg_match( '/^./us', $string ) ) {
-			return $string;
-		}
-
-		// Attempt to strip the bad chars if requested (not recommended)
-		if ( $strip && function_exists( 'iconv' ) ) {
-			return iconv( 'utf-8', 'utf-8', $string );
-		}
-
-		return '';
-	}
-
-	/**
 	 * Perform a deep string replace operation to ensure the values in $search are no longer present
 	 *
 	 * Repeats the replacement operation until it no longer replaces anything so as to remove "nested" values
@@ -1003,27 +968,28 @@ class DUPX_U
 	}
 
 	/**
-	 * Converts and fixes HTML entities.
-	 *
-	 * This function normalizes HTML entities. It will convert `AT&T` to the correct
-	 * `AT&amp;T`, `&#00058;` to `&#58;`, `&#XYZZY;` to `&amp;#XYZZY;` and so on.
-	 *
-	 * @param string $string Content to normalize entities
-	 * @return string Content with normalized entities
-	 */
-	public static function wp_kses_normalize_entities($string) {
-		// Disarm all entities by converting & to &amp;
-		$string = str_replace('&', '&amp;', $string);
+     * Converts and fixes HTML entities.
+     *
+     * This function normalizes HTML entities. It will convert `AT&T` to the correct
+     * `AT&amp;T`, `&#00058;` to `&#58;`, `&#XYZZY;` to `&amp;#XYZZY;` and so on.
+     *
+     * @param string $string Content to normalize entities
+     * @return string Content with normalized entities
+     */
+    public static function wp_kses_normalize_entities($string)
+    {
+        // Disarm all entities by converting & to &amp;
+        $string = str_replace('&', '&amp;', $string);
 
-		// Change back the allowed entities in our entity whitelist
-		$string = preg_replace_callback('/&amp;([A-Za-z]{2,8}[0-9]{0,2});/', 'self::wp_kses_named_entities', $string);
-		$string = preg_replace_callback('/&amp;#(0*[0-9]{1,7});/', 'self::wp_kses_normalize_entities2', $string);
-		$string = preg_replace_callback('/&amp;#[Xx](0*[0-9A-Fa-f]{1,6});/', 'self::wp_kses_normalize_entities3', $string);
+        // Change back the allowed entities in our entity whitelist
+        $string = preg_replace_callback('/&amp;([A-Za-z]{2,8}[0-9]{0,2});/', array(__CLASS__, 'wp_kses_named_entities'), $string);
+        $string = preg_replace_callback('/&amp;#(0*[0-9]{1,7});/', array(__CLASS__, 'wp_kses_normalize_entities2'), $string);
+        $string = preg_replace_callback('/&amp;#[Xx](0*[0-9A-Fa-f]{1,6});/', array(__CLASS__, 'wp_kses_normalize_entities3'), $string);
 
-		return $string;
-	}
+        return $string;
+    }
 
-	/**
+    /**
 	 * Callback for wp_kses_normalize_entities() regular expression.
 	 *
 	 * This function only accepts valid named entity references, which are finite,
@@ -1361,23 +1327,24 @@ class DUPX_U
 	}
 
 	/**
-	 * Convert all entities to their character counterparts.
-	 *
-	 * This function decodes numeric HTML entities (`&#65;` and `&#x41;`).
-	 * It doesn't do anything with other entities like &auml;, but we don't
-	 * need them in the URL protocol whitelisting system anyway.
-	 *
-	 * @param string $string Content to change entities
-	 * @return string Content after decoded entities
-	 */
-	public static function wp_kses_decode_entities($string) {
-		$string = preg_replace_callback('/&#([0-9]+);/', 'self::_wp_kses_decode_entities_chr', $string);
-		$string = preg_replace_callback('/&#[Xx]([0-9A-Fa-f]+);/', 'self::_wp_kses_decode_entities_chr_hexdec', $string);
+     * Convert all entities to their character counterparts.
+     *
+     * This function decodes numeric HTML entities (`&#65;` and `&#x41;`).
+     * It doesn't do anything with other entities like &auml;, but we don't
+     * need them in the URL protocol whitelisting system anyway.
+     *
+     * @param string $string Content to change entities
+     * @return string Content after decoded entities
+     */
+    public static function wp_kses_decode_entities($string)
+    {
+        $string = preg_replace_callback('/&#([0-9]+);/', array(__CLASS__, '_wp_kses_decode_entities_chr'), $string);
+        $string = preg_replace_callback('/&#[Xx]([0-9A-Fa-f]+);/', array(__CLASS__, '_wp_kses_decode_entities_chr_hexdec'), $string);
 
-		return $string;
-	}
+        return $string;
+    }
 
-	/**
+    /**
 	 * Regex callback for wp_kses_decode_entities()
 	 *
 	 * @param array $match preg match
@@ -1543,7 +1510,7 @@ class DUPX_U
 	 * @return string Sanitized string.
 	 */
 	public static function _sanitize_text_fields( $str, $keep_newlines = false ) {
-		$filtered = self::wp_check_invalid_utf8( $str );
+		$filtered = DupLiteSnapJsonU::wp_check_invalid_utf8( $str );
 
 		if ( strpos($filtered, '<') !== false ) {
 			$filtered = self::wp_pre_kses_less_than( $filtered );
@@ -1696,25 +1663,28 @@ class DUPX_U
 
 		return $wrapper . $path;
 	}
+    
+    /**
+     * Test if a given path is a stream URL
+     * 
+     * from wordpress function wp_is_stream
+     *
+     * @param string $path The resource path or URL.
+     * @return bool True if the path is a stream URL.
+     */
+    function wp_is_stream($path)
+    {
+        $scheme_separator = strpos($path, '://');
 
-	/**
-	 * Test if a given path is a stream URL
-	 *
-	 * @param string $path The resource path or URL.
-	 * @return bool True if the path is a stream URL.
-	 */
-	public static function wp_is_stream( $path ) {
-		if ( false === strpos( $path, '://' ) ) {
-			// $path isn't a stream
-			return false;
-		}
+        if (false === $scheme_separator) {
+            // $path isn't a stream
+            return false;
+        }
 
-		$wrappers    = stream_get_wrappers();
-		$wrappers    = array_map( 'preg_quote', $wrappers );
-		$wrappers_re = '(' . join( '|', $wrappers ) . ')';
+        $stream = substr($path, 0, $scheme_separator);
 
-		return preg_match( "!^$wrappers_re://!", $path ) === 1;
-	}
+        return in_array($stream, stream_get_wrappers(), true);
+    }
 
     /**
      * Check if string is base64 encoded
@@ -1770,7 +1740,7 @@ class DUPX_U
      */
     public static function getEscapedGenericString($str, $addQuote = true)
     {
-        $result = DupLiteSnapLibUtil::wp_json_encode(trim($str));
+        $result = DupLiteSnapJsonU::wp_json_encode(trim($str));
         $result = str_replace(array('\/', '$'), array('/', '\\$'), $result);
         $result = preg_replace_callback(
             '/\\\\u[a-fA-F0-9]{4}/m', array(__CLASS__, 'encodeUtf8CharFromRegexMatch'), $result
@@ -1781,5 +1751,37 @@ class DUPX_U
         }
         return $result;
     }
+
+    /**
+     *
+     * @param array $input // es $_POST $_GET $_REQUEST
+     * @param string $key // key of array to check
+     * @param array $options // array('default' => null, default value to return if key don't exist
+     *                                'trim' => false // if true trim sanitize value
+     *                          )
+     * @return type
+     */
+    public static function isset_sanitize($input, $key, $options = array())
+    {
+        $opt = array_merge(array('default' => null, 'trim' => false), $options);
+        if (isset($input[$key])) {
+            $result = DUPX_U::sanitize_text_field($input[$key]);
+            if ($opt['trim']) {
+                $result = trim($result);
+            }
+            return $result;
+        } else {
+            return $opt['default'];
+        }
+    }
+
+    public static function boolToStr($input)
+    {
+        return $input ? 'true' : 'false';
+    }
+
+    public static function boolToEnable($input)
+    {
+        return $input ? 'enable' : 'disable';
+    }
 }
-DUPX_U::init();

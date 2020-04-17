@@ -182,8 +182,8 @@ TOOL BAR:STEPS -->
 			</div>	
 		</td>
 		<td>
-			<a href="?page=duplicator" class="add-new-h2"><i class="fa fa-archive fa-sm"></i> <?php esc_html_e('Packages', 'duplicator'); ?></a> 
-			<span> <?php esc_html_e('Create New', 'duplicator'); ?></span>
+			<a href="?page=duplicator" class="button"><i class="fa fa-archive fa-sm"></i> <?php esc_html_e('Packages', 'duplicator'); ?></a>
+			<a href="javascript:void(0)" class="button disabled"> <?php esc_html_e("Create New", 'duplicator'); ?></a>
 		</td>
 	</tr>
 </table>		
@@ -266,7 +266,7 @@ TOOL BAR:STEPS -->
 		<div class="dup-button-footer" style="display:none">
 			<input type="button" value="&#9664; <?php esc_html_e("Back", 'duplicator') ?>" onclick="window.location.assign('?page=duplicator&tab=new1&_wpnonce=<?php echo wp_create_nonce('new1-package');?>')" class="button button-large" />
 			<input type="button" value="<?php esc_attr_e("Rescan", 'duplicator') ?>" onclick="Duplicator.Pack.rescan()" class="button button-large" />
-			<input type="submit"  onclick="Duplicator.Pack.startBuild();" value="<?php esc_attr_e("Build", 'duplicator') ?> &#9654" class="button button-primary button-large" id="dup-build-button" />
+			<input type="submit"  onclick="return Duplicator.Pack.startBuild();" value="<?php esc_attr_e("Build", 'duplicator') ?> &#9654" class="button button-primary button-large" id="dup-build-button" />
 		</div>
 	</div>
 
@@ -420,7 +420,7 @@ jQuery(document).ready(function($)
 		html_msg += '<li><?php esc_html_e("- On some budget hosts scanning over 30k files can lead to timeout/gateway issues. Consider scanning only your main WordPress site and avoid trying to backup other external directories.", 'duplicator') ?></li>';
 		html_msg += '<li><?php esc_html_e("- Symbolic link recursion can cause timeouts.  Ask your server admin if any are present in the scan path.  If they are add the full path as a filter and try running the scan again.", 'duplicator') ?></li>';
 		html_msg += '</ul>';
-		$('#dup-msg-error-response-status').html('Scan Path Error [<?php echo rtrim(DUPLICATOR_WPROOTPATH, '/'); ?>]');
+		$('#dup-msg-error-response-status').html('Scan Path Error [<?php echo duplicator_get_abs_path(); ?>]');
 		$('#dup-msg-error-response-text').html(html_msg);
 		$('#dup-msg-error').show(200);
 	}

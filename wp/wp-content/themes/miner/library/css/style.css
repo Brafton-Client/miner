@@ -812,7 +812,7 @@ them however you see fit.
   .d-5of7 {
     float: left;
     padding-right: 0.75em;
-    width: 71.4285715%; }
+    width: 100%; }
 
   .d-6of7 {
     float: left;

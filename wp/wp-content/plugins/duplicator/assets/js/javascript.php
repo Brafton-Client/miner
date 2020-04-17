@@ -133,6 +133,31 @@ Duplicator.UI.SaveViewState = function (key, value)
 	}
 }
 
+/*	Saves multiple states of a UI element */ 
+Duplicator.UI.SaveMulViewStates = function (states)
+{
+	jQuery.ajax({
+		type: "POST",
+		url: ajaxurl,
+		dataType: "text",
+		data: {
+			action : 'DUP_CTRL_UI_SaveViewState',
+			states: states,
+			nonce: '<?php echo wp_create_nonce('DUP_CTRL_UI_SaveViewState'); ?>'
+		},
+		success: function(respData) {
+			try {
+				var data = Duplicator.parseJSON(respData);
+			} catch(err) {
+				console.error(err);
+				console.error('JSON parse failed for response data: ' + respData);
+				return false;
+			}
+		},
+		error: function(data) {}
+	});
+}
+
 /* Animates the progress bar */
 Duplicator.UI.AnimateProgressBar = function(id) 
 {
@@ -149,6 +174,7 @@ Duplicator.UI.AnimateProgressBar = function(id)
 	}
 }
 
+Duplicator.UI.IsSaveViewState = true;
 /* Toggle MetaBoxes */ 
 Duplicator.UI.ToggleMetaBox = function() 
 {
@@ -158,7 +184,8 @@ Duplicator.UI.ToggleMetaBox = function()
 	var key   = $panel.attr('id');
 	var value = $panel.is(":visible") ? 0 : 1;
 	$panel.toggle();
-	Duplicator.UI.SaveViewState(key, value);
+	if (Duplicator.UI.IsSaveViewState)
+		Duplicator.UI.SaveViewState(key, value);
 	(value) 
 		? $arrow.removeClass().addClass('fa fa-caret-up') 
 		: $arrow.removeClass().addClass('fa fa-caret-down');
@@ -296,5 +323,24 @@ jQuery(document).ready(function($)
 	//Prevent notice boxes from flashing as its re-positioned in DOM
 	$('div.dup-wpnotice-box').show(300);
 
-});	
+});
+
+jQuery(document).ready(function($) {
+    $('.duplicator-message .notice-dismiss, .duplicator-message .duplicator-notice-dismiss, .duplicator-message  .duplicator-notice-rate-now').on('click', function (event) {
+		if ('button button-primary duplicator-notice-rate-now' !== $(event.target).attr('class')) {
+			event.preventDefault();
+		}
+        $.post(ajaxurl, {
+            action: 'duplicator_set_admin_notice_viewed',
+            notice_id: $(this).closest('.duplicator-message-dismissed').data('notice_id')
+        });
+        var $wrapperElm = $(this).closest('.duplicator-message-dismissed');
+        $wrapperElm.fadeTo(100, 0, function () {
+            $wrapperElm.slideUp(100, function () {
+                $wrapperElm.remove();
+            });
+        });
+    });   
+});
+
 </script>

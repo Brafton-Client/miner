@@ -7,15 +7,18 @@
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
         exit;
 }
+require_once 'helper.php';
 require_once 'define.php';
 require_once 'classes/class.settings.php';
 require_once 'classes/utilities/class.u.php';
 
 global $wpdb;
-$DUP_Settings = new DUP_Settings();
+DUP_Settings::init();
 
 $table_name = $wpdb->prefix . "duplicator_packages";
 $wpdb->query("DROP TABLE IF EXISTS `{$table_name}`");
+
+$wpdb->query("DELETE FROM ".$wpdb->usermeta." WHERE meta_key='".DUPLICATOR_ADMIN_NOTICES_USER_META_KEY."'");
 
 delete_option('duplicator_version_plugin');
 delete_option('duplicator_usage_id');

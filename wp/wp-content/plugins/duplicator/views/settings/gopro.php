@@ -30,7 +30,8 @@ require_once(DUPLICATOR_PLUGIN_PATH . '/views/inc.header.php');
 	#comparison-table td, #comparison-table th { font-size:1.2rem; padding:11px; }
 	#comparison-table .feature-column { text-align:left; width:46%}
 	#comparison-table .check-column { text-align:center; width:27% }
-	#comparison-table tr:nth-child(2n+2) {background-color:#f6f6f6; }
+	#comparison-table tr:nth-child(2n+2) { background-color:#f6f6f6; }
+	.button.button-large.dup-check-it-btn { line-height: 28px; }
 </style>
 
 <div class="dup-pro-area">
@@ -216,7 +217,7 @@ require_once(DUPLICATOR_PLUGIN_PATH . '/views/inc.header.php');
 				<?php esc_html_e('Active Customer Support', 'duplicator') ?>
 				<sup><i  class="fa fa-question-circle dup-gopro-help"
 						data-tooltip-title="<?php esc_attr_e("Support", 'duplicator'); ?>"
-                        data-tooltip="<?php esc_attr_e('Pro users get top priority for any requestst to our support desk.  In most cases responses will be answered in under 24 hours.', 'duplicator'); ?>"/></i></sup>
+                        data-tooltip="<?php esc_attr_e('Pro users get top priority for any requests to our support desk.  In most cases responses will be answered in under 24 hours.', 'duplicator'); ?>"/></i></sup>
 			</td>
 			<td class="check-column"></td>
 			<td class="check-column"><i class="fa fa-check"></i></td>

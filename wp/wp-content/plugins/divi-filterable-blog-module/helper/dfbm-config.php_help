@@ -1,0 +1,605 @@
+<?php
+/**
+ * Do not allow direct access
+ *
+ * @since	1.0.0
+ */
+if ( ! defined( 'ABSPATH' ) ) die( 'Don\'t try to load this file directly!' );
+
+
+/*************************************************************************************************************************************************
+
+	Divi - Filterable Blog Module - Configuration File
+
+	Simply place this file in your theme or child-theme in a folder "includes", e.g: "/child-theme/includes/dfbm-config.php"
+
+	BE AWARE: ANYTHING THAT IS NOT NEEDED MUST BE COMMENDED OUT OR REMOVED BEFOREHAND
+
+	YOU ALSO NEED TO CHNAGE THE SUFFIX FROM THIS FILE FROM ".php_help" TO ".php"
+
+*************************************************************************************************************************************************/
+
+
+/**
+ * Re-install all default archive layouts: "DFBM-Search", "DFBM-Author" etc.
+ *
+ * Open your Divi layout directory. Then uncomment the following function and reload your layout directory once. Comment out the function again and reload the layout directory again. You can also install the layouts from the JSON files inside "/helpers/layouts/"
+ *
+ * @since	1.0.6
+ */
+
+delete_option( 'dfbm_layouts_added' );
+
+
+/**
+ * Determine the post types of search results when the search archive is activated
+ *
+ * The default is set to [ 'post' ]
+ *
+ * @param array $postTypes
+ *
+ * @return array $postTypes
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_set_search_posttypes', function( $postTypes )
+{
+
+	return [ 'post', 'project' ];
+
+});
+
+
+/**
+ * Determine the post types of author results when the author archive is activated
+ *
+ * The default is set to [ 'post' ]
+ *
+ * @param array $postTypes
+ *
+ * @return array $postTypes
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_set_author_posttypes', function( $postTypes )
+{
+
+	return [ 'post', 'project' ];
+
+});
+
+
+/**
+ * Customize the query arguments before the corresponding posts are retrieved. Thus, search results can be influenced or special information for custom posttypes can be retrieved
+ *
+ * The default is the $query_args array
+ *
+ * Example: https://gist.github.com/ae1080fed54357beb1c0edc1c375ab96
+ *
+ * @param array $query_args
+ *
+ * @return array $query_args
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_query_args_output', function( $query_args )
+{
+
+	if ( 'event' == $query_args['post_type'] )
+	{
+
+	    $query_args['orderby'] =
+	    [
+	        'date' => 'ASC', // DESC
+	        'time' => 'ASC', // DESC
+	    ];
+	} // end if
+
+	return $query_args;
+
+});
+
+
+/**
+ * Determine whether the scrollbar should be hidden when scrolling
+ *
+ * The default is set to true
+ *
+ * @param boolean $bool
+ *
+ * @return boolean $bool
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_hide_scrollbar', '__return_false' );
+
+
+/**
+ * Determine the width of the images to be used for the post items
+ *
+ * The default is set to 1080 for the full-width layout and 400 for the masonry-layout
+ *
+ * @param int $width
+ *
+ * @return int $width
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_blog_image_width', function( $width )
+{
+
+	return 660;
+
+});
+
+
+/**
+ * Determine the height of the images to be used for the post items
+ *
+ * The default is set to 675 for the full-width layout and 250 for the masonry-layout
+ *
+ * @param int $height
+ *
+ * @return int $height
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_blog_image_height', function( $height )
+{
+
+	return 350;
+
+});
+
+
+/**
+ * Determine the separator for the meta information in the post items
+ *
+ * The default is set to ' | '
+ *
+ * @param string $separator
+ *
+ * @return string $separator
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_meta_separator', function( $separator )
+{
+
+	return ' » ';
+
+});
+
+
+/**
+ * Determine the separator for the category text filter
+ *
+ * The default is set to ' / '
+ *
+ * @param string $separator
+ *
+ * @return string $separator
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_filter_separator', function( $separator )
+{
+
+	return ' » ';
+
+});
+
+
+/**
+ * Determine whether the suffix when the words of the post content are limited
+ *
+ * The default is set to '...'
+ *
+ * @param string $suffix
+ *
+ * @return string $suffix
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_limit_wordcount_suffix', function( $suffix )
+{
+
+	return '..';
+
+});
+
+
+/**
+ * Determine whether short codes should be extracted from the post item contents
+ *
+ * The default is set to true
+ *
+ * @param boolean $bool
+ *
+ * @return boolean $bool
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_strip_shortcodes', function( $bool )
+{
+
+	return false;
+
+});
+
+
+/**
+ * Determine whether plain urls should be extracted from the post item contents
+ *
+ * The default is set to true
+ *
+ * @param boolean $bool
+ *
+ * @return boolean $bool
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_strip_out_plain_url', function( $bool )
+{
+
+	return false;
+
+});
+
+
+/**
+ * Specify the maximum viewport width from which the maximum number of columns is forced. This can be helpful if you specified a high width in the theme customizer
+ *
+ * The default is set to 1080
+ *
+ * @param int $width
+ *
+ * @return int $width
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_column_collapse_max_width', function( $width )
+{
+
+	return 1200;
+
+});
+
+
+/**
+ * Add additional classes to the container for the filterable blogs to add dynamic CSS rules or JavaScript commands
+ *
+ * The default is set to ''
+ *
+ * @param string $class
+ *
+ * @return string $class
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_additional_class', function( $class )
+{
+
+	global $post;
+
+	if ( 55 == $post->ID )
+		$class = ' something';
+
+	return $class;
+
+});
+
+
+/**
+ * These are different action hooks that can be used to add additional content to the different post items. The hook names should be self-explanatory. The output is buffered, so you need to echo it out
+ *
+ * @param object $post
+ *
+ * @param boolean $featured
+ *
+ * @since	1.0.6
+ */
+
+add_action( 'dfbm_post_meta_before', function( $post, $featured )
+{
+
+	// check $post and / or $featured
+
+	printf( '<p class="post-meta my-class">%1$s</p>', $something );
+
+	echo $somethingElse;
+
+});
+
+add_action( 'dfbm_post_title_before', function( $post, $featured )
+{
+
+	// check $post and / or $featured
+
+	printf( '<p class="post-meta my-class">%1$s</p>', $something );
+
+	echo $somethingElse;
+
+});
+
+add_action( 'dfbm_posts_content_before', function( $post, $featured )
+{
+
+	// check $post and / or $featured
+
+	printf( '<p class="post-meta my-class">%1$s</p>', $something );
+
+	echo $somethingElse;
+
+});
+
+add_action( 'dfbm_posts_content_after', function( $post, $featured )
+{
+
+	// check $post and / or $featured
+
+	printf( '<p class="post-meta my-class">%1$s</p>', $something );
+
+	echo $somethingElse;
+
+});
+
+add_action( 'dfbm_posts_bottom_after', function( $post, $featured )
+{
+
+	// check $post and / or $featured
+
+	printf( '<p class="post-meta my-class">%1$s</p>', $something );
+
+	echo $somethingElse;
+
+});
+
+
+/**
+ * Determine whether or not the ID of the posts is to be displayed in a separate column in the posts overview in the backend
+ *
+ * The default is set to true
+ *
+ * @param boolean $bool
+ *
+ * @return boolean $bool
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_id_to_column', function( $bool )
+{
+
+	return false;
+
+});
+
+
+/**
+ * Determine whether the content of posts should be checked for modul shortcodes first, before styles and scripts are anchored
+ *
+ * The default is set to true
+ *
+ * @param boolean $bool
+ *
+ * @return boolean $bool
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_check_content_for_enqueue', function( $bool )
+{
+
+	return false;
+
+});
+
+
+/**
+ * Determine whether to check that the archive templates are used or not
+ *
+ * The default is set to true
+ *
+ * @param boolean $bool
+ *
+ * @return boolean $bool
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_use_archive_templates', function( $bool )
+{
+
+	return false;
+
+});
+
+
+/**
+ * Determine the lifetime of the alternative nonces created when caching plugins are enabled to prevent errors in AJAX output
+ *
+ * The default is set to 600 seconds
+ *
+ * @param int $length
+ *
+ * @return int $length
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_alt_nonce_life', function( $length )
+{
+
+	return 1200;
+
+});
+
+
+/**
+ * Change the permissions of users who can change the archive layout default settings
+ *
+ * The default is set to 'edit_posts'
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_edit_archive_capability', function( $capability )
+{
+
+	return 'administrator';
+
+});
+
+
+/**
+ * Determine if the WooCommerce breadcrumb is hidden
+ *
+ * The default is set to false
+ *
+ * @param boolean $bool
+ *
+ * @return boolean $bool
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'dfbm_hide_woocommerce_breadcrumb', function( $bool )
+{
+
+	return true;
+
+});
+
+
+/**
+ * Determine which template to use to display the archive layouts
+ *
+ * Check /divi-filterable-blog-module/includes/controller/view.php for this
+ *
+ * @param string $templatePath
+ *
+ * @param string $template
+ *
+ * @return string $templatePath
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'woocommerce_breadcrumb_home_url', function( $templatePath, $template )
+{
+
+	// check $template and do something with $templatePath
+
+	return $templatePath;
+
+}, 10, 2 );
+
+
+/**
+ * Edit the WooCommerce breadcrumb default arguments
+ *
+ * Check /divi-filterable-blog-module/includes/controller/blogposts.php for this
+ *
+ * @param array $args
+ *
+ * @return array $args
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'woocommerce_breadcrumb_defaults', function( $args )
+{
+
+	// do something with $args
+
+	return $args;
+
+});
+
+
+/**
+ * Edit the WooCommerce breadcrumb base link
+ *
+ * Check /divi-filterable-blog-module/includes/controller/blogposts.php for this
+ *
+ * @param string $link
+ *
+ * @return string $link
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'woocommerce_breadcrumb_home_url', function( $link )
+{
+
+	// do something with $link
+
+	return $link;
+
+});
+
+
+/**
+ * Edit the WooCommerce "Add to cart" link arguments before the link creation
+ *
+ * Check /divi-filterable-blog-module/includes/controller/blogposts.php for this
+ *
+ * @param array $args
+ *
+ * @return array $args
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'woocommerce_loop_add_to_cart_args', function( $args )
+{
+
+	// do something with $args
+
+	return $args;
+
+});
+
+
+/**
+ * Edit the WooCommerce "Add to cart" link before the output
+ *
+ * Check /divi-filterable-blog-module/includes/controller/blogposts.php for this
+ *
+ * @param string $link
+ *
+ * @return string $link
+ *
+ * @since	1.0.6
+ */
+
+add_filter( 'woocommerce_loop_add_to_cart_link', function( $link )
+{
+
+	// do something with $link
+
+	return $link;
+
+});
+
+
+/**
+ * There are more hooks in the template for the archive pages to add content, etc. Please open the template for it and look at the different possibilities.
+ *
+ * Check /divi-filterable-blog-module/includes/view/template.php
+ *
+ */

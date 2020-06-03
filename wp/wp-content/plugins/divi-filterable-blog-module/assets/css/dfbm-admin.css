@@ -1,0 +1,17 @@
+/**********************************************************************************
+	Symbol
+**********************************************************************************/
+
+.et-pb-all-modules .et_pb_dfbm_blog::before,
+.et_pb_saved_layouts_list .et_pb_dfbm_blog::before,
+.et-pb-all-modules .et_pb_dfbm_blog_light::before,
+.et_pb_saved_layouts_list .et_pb_dfbm_blog_light::before {
+    content: '\6c';
+    margin-top: 10px;
+}
+
+.dfbm-tags,
+.dfbm-categories {
+    vertical-align: top;
+    line-height: 25px;
+}

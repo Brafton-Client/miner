@@ -4,6 +4,33 @@
 
 				<div id="inner-content" class="wrap cf">
 
+				<div class="filter-criteria">
+					<form>
+						<div class="content-type">
+							<select class="content-type" name="content-type" value="">
+								<option value="">eBooks</option>
+							</select>
+						</div>
+						<div class="product">
+							<select class="product" name="product" value="">
+								<option value="">Docks</option>
+							</select>
+						</div>
+						<div class="industry">
+							<select class="industry" name="industry" value="">
+								<option value="">Oil</option>
+							</select>
+						</div>
+					</form>
+					<form>
+						<div class="search">
+							<input type="text" placeholder="Search" name="s"/>
+						</div>
+					</form>
+				</div>
+
+
+
 						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>

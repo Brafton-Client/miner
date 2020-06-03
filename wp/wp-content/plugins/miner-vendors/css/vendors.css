@@ -1,6 +1,7 @@
 /* line 2, ../scss/sass/vendors.scss */
 #miner-vendor-lp .products {
   justify-content: space-between;
+	margin-top:2em;
 }
 @media only screen and (min-width: 768px) {
   /* line 2, ../scss/sass/vendors.scss */
@@ -38,10 +39,17 @@
     flex-wrap: nowrap;
     flex-direction: column;
     flex: 1 0 16.6%;
+	  order:6;
   }
+	#colomn-49{
+		order:2 !important;
+	}
+	#colomn-45{
+		order:1 !important;
+	}
   /* line 33, ../scss/sass/vendors.scss */
   #miner-vendor-lp .chart-column .product {
-    flex: 1 0 20%;
+    flex: 1 0 14%;
   }
   /* line 35, ../scss/sass/vendors.scss */
   #miner-vendor-lp .chart-column .product h4 {
@@ -50,6 +58,6 @@
   }
   /* line 40, ../scss/sass/vendors.scss */
   #miner-vendor-lp .chart-column .vendors {
-    flex: 0 1 80%;
+    flex: 0 1 86%;
   }
 }

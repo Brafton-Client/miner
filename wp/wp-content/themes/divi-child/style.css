@@ -1,0 +1,162 @@
+/*
+ Theme Name:     Divi Child
+ Theme URI:      https://www.elegantthemes.com/gallery/divi/
+ Description:    Divi Child Theme
+ Author:         Elegant Themes
+ Author URI:     https://www.elegantthemes.com
+ Template:       Divi
+ Version:        1.0.0
+*/
+/* =Theme customization starts here
+------------------------------------------------------- */
+/* line 16, scss/sass/style.scss */
+.blog.et_right_sidebar #main-content .container:before {
+  display: none;
+}
+/* line 20, scss/sass/style.scss */
+.blog .filter-criteria {
+  margin-top: 1em;
+  background-color: #DDDDDD;
+}
+/* line 23, scss/sass/style.scss */
+.blog .filter-criteria .container {
+  display: flex;
+  padding-top: 0 !important;
+  padding: 2em 1em !important;
+}
+/* line 28, scss/sass/style.scss */
+.blog .filter-criteria .container form {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: justify;
+  justify-content: space-around;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+/* line 47, scss/sass/style.scss */
+.blog .filter-criteria .container form.filters {
+  flex: 0 1 60%;
+}
+/* line 50, scss/sass/style.scss */
+.blog .filter-criteria .container form.filters .filter {
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex: 0 1 25%;
+  -ms-flex: 0 1 25%;
+  flex: 0 1 25%;
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+}
+/* line 60, scss/sass/style.scss */
+.blog .filter-criteria .container form.filters .filter select {
+  width: 100%;
+}
+/* line 65, scss/sass/style.scss */
+.blog .filter-criteria .container form.search {
+  flex: 0 1 40%;
+}
+/* line 67, scss/sass/style.scss */
+.blog .filter-criteria .container form.search .search {
+  width: 75%;
+}
+/* line 69, scss/sass/style.scss */
+.blog .filter-criteria .container form.search .search input {
+  width: 100%;
+}
+/* line 77, scss/sass/style.scss */
+.blog .featured-resources {
+  background-color: #DDDDDD;
+  margin-top: 2em;
+}
+/* line 80, scss/sass/style.scss */
+.blog .featured-resources .container {
+  padding-bottom: 58px;
+}
+@media only screen and (min-width: 780px) {
+  /* line 80, scss/sass/style.scss */
+  .blog .featured-resources .container {
+    padding-bottom: 0;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: justify;
+    justify-content: space-around;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+  }
+}
+/* line 103, scss/sass/style.scss */
+.blog .featured-resources .container h2 {
+  text-align: center;
+  text-transform: uppercase;
+  flex: 1 0 100%;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 1.5em;
+}
+/* line 112, scss/sass/style.scss */
+.blog .featured-resources .container article {
+  flex: 0 1 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-bottom: 3em;
+}
+/* line 119, scss/sass/style.scss */
+.blog .featured-resources .container article .featured-image {
+  position: relative;
+  width: 100%;
+  height: 175px;
+  overflow: hidden;
+}
+/* line 124, scss/sass/style.scss */
+.blog .featured-resources .container article .featured-image .shadow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: inset 0px 0px 13px 10px rgba(0, 0, 0, 0.61);
+  -moz-box-shadow: inset 0px 0px 13px 10px rgba(0, 0, 0, 0.61);
+  box-shadow: inset 0px 0px 13px 10px rgba(0, 0, 0, 0.61);
+}
+/* line 134, scss/sass/style.scss */
+.blog .featured-resources .container article .featured-image .shadow img.feature {
+  margin: 1em 0 0 1em;
+}
+/* line 143, scss/sass/style.scss */
+.blog .featured-resources .container article p {
+  font-weight: 700;
+  color: black;
+  text-transform: uppercase;
+}
+/* line 149, scss/sass/style.scss */
+.blog .featured-resources .container article a.title {
+  font-weight: 700;
+  font-size: 1.15em;
+}

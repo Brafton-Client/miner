@@ -1,0 +1,158 @@
+/*
+ Theme Name:     Divi Child
+ Theme URI:      https://www.elegantthemes.com/gallery/divi/
+ Description:    Divi Child Theme
+ Author:         Elegant Themes
+ Author URI:     https://www.elegantthemes.com
+ Template:       Divi
+ Version:        1.0.0
+*/
+ 
+ 
+/* =Theme customization starts here
+------------------------------------------------------- */
+$gray: #DDDDDD;
+.blog{
+    &.et_right_sidebar #main-content .container:before{
+        display:none;
+    }
+
+    .filter-criteria{
+        margin-top:1em;
+        background-color:$gray;
+        .container{
+            display:flex;
+            padding-top:0 !important;
+            padding:2em 1em !important;
+            
+            form{
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-flex-direction: row;
+                -ms-flex-direction: row;
+                flex-direction: row;
+                -webkit-flex-wrap: nowrap;
+                -ms-flex-wrap: nowrap;
+                flex-wrap: nowrap;
+                -webkit-justify-content: space-around;
+                -ms-flex-pack: justify;
+                justify-content: space-around;
+                -webkit-align-content: center;
+                -ms-flex-line-pack: center;
+                align-content: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+                align-items: center;
+                &.filters{
+                    flex: 0 1 60%;
+                    ;
+                    .filter{
+                        -webkit-order: 0;
+                        -ms-flex-order: 0;
+                        order: 0;
+                        -webkit-flex: 0 1 25%;
+                        -ms-flex: 0 1 25%;
+                        flex: 0 1 25%;
+                        -webkit-align-self: auto;
+                        -ms-flex-item-align: auto;
+                        align-self: auto;
+                        select{
+                            width:100%;
+                        }
+                    }
+                }
+                &.search{
+                    flex: 0 1 40%;
+                    .search{
+                        width:75%;
+                        input{
+                            width:100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .featured-resources{
+        background-color:$gray;
+        margin-top:2em;
+        .container{
+            padding-bottom:58px;
+            @media only screen and (min-width:780px){
+                padding-bottom:0;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-flex-direction: row;
+                -ms-flex-direction: row;
+                flex-direction: row;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+                -webkit-justify-content: space-around;
+                -ms-flex-pack: justify;
+                justify-content: space-around;
+                -webkit-align-content: center;
+                -ms-flex-line-pack: center;
+                align-content: center;
+                -webkit-align-items: flex-start;
+                -ms-flex-align: flex-start;
+                align-items: flex-start;
+            }
+            h2{
+                text-align: center;
+                text-transform: uppercase;
+                flex: 1 0 100%;
+                font-weight: 700;
+                letter-spacing: 3px;
+                margin-bottom:1.5em;
+            
+            }
+            article{
+                flex:0 1 20%;
+                
+                background-repeat: no-repeat;
+                background-size:cover;
+                position: relative;
+                margin-bottom:3em;
+                .featured-image{
+                    position: relative;
+                    width:100%;
+                    height: 175px;
+                    overflow:hidden;
+                    .shadow{
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 100%;
+                        height: 100%;
+                        -webkit-box-shadow: inset 0px 0px 13px 10px rgba(0,0,0,0.61);
+                        -moz-box-shadow: inset 0px 0px 13px 10px rgba(0,0,0,0.61);
+                        box-shadow: inset 0px 0px 13px 10px rgba(0,0,0,0.61);
+                        img{
+                            &.feature{
+                                margin:1em 0 0 1em;
+                            }
+                        }
+                    }
+                    img{
+                        
+                    }
+                }
+                p{
+                    font-weight:700;
+                    color:black;
+                    text-transform:uppercase;
+                }
+                a{
+                    &.title{
+                        font-weight:700;
+                        font-size:1.15em;
+                    }
+                }
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,152 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+#left-area {
+	width: 100%;
+}
+.page-id-145 .map-inner {
+	margin: 0 auto 5em auto;
+}
+.map-inner {
+	max-width: 1200px;
+	margin: 0 auto;
+    text-align: center;
+}
+.map-inner svg {
+	max-width: 900px;
+	max-height: 100vh;
+}
+svg .active {
+    fill: #000;
+}
+svg polygon {
+    cursor: pointer;
+}
+.hide {
+    opacity: 0;
+    display: none;
+}
+.show {
+    opacity: 1;
+    animation: fadeIn ease 3s;
+    display: block;
+}
+.page-id-145 #data-repo {
+	top: 20px;
+	left: 0 !important;
+}
+#data-repo {
+	position: absolute;
+	top: 100px;
+	margin: 0 auto;
+	z-index: 99;
+}
+heading {
+	padding: 0.5em 2em;
+	color: #FFF;
+	background: #000;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#state-icon {
+	max-height: 50px;
+}
+#state {
+	margin-right: 1em;
+	color: #FFF;
+	font-size: 1.5em;
+	padding-bottom: 0;
+}
+#locations {
+	padding: 2em;
+	display: flex;
+	background: #FFF;
+	flex-direction: column;
+	align-items: flex-start;
+	border: 1px solid #666;
+	flex-wrap: wrap;
+}
+#locations > div {
+	flex: 1 0 33%;
+	padding: 0 1%;
+	box-sizing: border-box;
+}
+#locations p{
+	text-align: left !important;
+}
+.location-title {
+	margin: 8px 0;
+	color: red;
+	font-size: 14px;
+	font-weight: 800;
+	text-align: left;
+	padding-bottom: 0;
+	text-transform: unset;
+}
+#locations p {
+	margin: 0;
+	font-size: 14px;
+	padding-bottom: 0;
+}
+#locations .email {
+    margin-bottom: 1em;
+}
+.mail-icon {
+	width: 20px;
+	height: auto;
+	margin-right: 0.2em;
+	position: relative;
+	top: 3px;
+}
+#locations .contact,
+#affiliate .contact {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+	min-width: 170px;
+}
+#affiliate .contact {
+	display: flex;
+	justify-content: center;
+}
+#affiliate {
+	position: absolute;
+	top: 100px;
+	background: #FFF;
+	padding: 1em;
+	border: 1px solid #666;
+	min-width: 250px;
+}
+#affiliate h3 {
+    text-transform: uppercase;
+    color: red;
+    font-size: 1em;
+}
+.phone {
+	text-decoration: navajowhite;
+	color: #000;
+	font-size: 14px;
+	text-align: left;
+}
+@media only screen and (min-width: 1030px) {
+	#locations {
+		flex-direction: row;
+	}
+}
+@keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+}
+@keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }  

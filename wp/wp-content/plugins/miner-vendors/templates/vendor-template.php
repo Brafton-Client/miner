@@ -41,7 +41,7 @@ $vendor_cities = array_map('getCities',$cities);
 		<div class="products">
 			<?php foreach($products as $product) {
 				?>
-				<div class="chart-column">
+				<div class="chart-column" id="colomn-<?php echo $product->term_id; ?>">
 					<div class="product">
 						<!-- alternate route needed for assigning image to product id, need to back-out ACF function call! -->
 						<img src="<?php echo MINER_PLUGIN_URL.'images/'.$product->slug.'.png'; ?>" alt="<?php echo $product->term_id ?>" />

@@ -1,0 +1,1766 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Divi - Filterable Blog Module\n"
+"POT-Creation-Date: 2018-08-06 21:21+0200\n"
+"PO-Revision-Date: 2017-05-26 17:38+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: divi-filterable-blog-module.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: includes/controller/admin.php:104
+msgid "Cache Error. Please reload the page."
+msgstr ""
+
+#: includes/controller/admin.php:105
+msgid ""
+"While saving the options an error occured. Please save the layout, then open "
+"and close the '"
+msgstr ""
+
+#: includes/controller/admin.php:116
+msgid ""
+"Here you can make basic settings for the fonts of the module, which you can "
+"refine in the following settings."
+msgstr ""
+
+#: includes/controller/admin.php:118
+msgid ""
+"Here you can make basic settings especially for the fonts of the filterable-"
+"post-area, which you can refine in the following settings."
+msgstr ""
+
+#: includes/controller/admin.php:120
+msgid ""
+"In this font set ( until - Post Content Text - ) you can set the fonts for "
+"the featured- and filterable-posts. If you want to set different colors for "
+"both areas ( independent fonts button above enabled ), you can make the "
+"settings for the featured-posts here."
+msgstr ""
+
+#: includes/controller/admin.php:122
+msgid ""
+"In this font set ( until - Post Content Filterable Posts Text - ) you can "
+"overwrite the font settings above for the filterable-posts."
+msgstr ""
+
+#: includes/controller/ajax.php:507
+msgid ""
+"That fails. Please check your video settings. If you use a CDN-Service for "
+"your embedded videos, you must declare your CDN-Origin within the lightbox "
+"module settings."
+msgstr ""
+
+#: includes/controller/ajax.php:521
+msgid "That fails. Please reload the page and try it again."
+msgstr ""
+
+#: includes/controller/blogposts.php:598
+msgid "Reviews"
+msgstr ""
+
+#: includes/controller/blogposts.php:800
+#, php-format
+msgid "by %s"
+msgstr ""
+
+#: includes/controller/blogposts.php:816
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: includes/controller/blogposts.php:869
+msgid "Add to cart"
+msgstr ""
+
+#: includes/controller/blogposts.php:1053
+msgid "Page "
+msgstr ""
+
+#: includes/controller/blogposts.php:1053
+msgid " of "
+msgstr ""
+
+#: includes/controller/blogposts.php:1071
+msgid "Prev"
+msgstr ""
+
+#: includes/controller/blogposts.php:1072
+msgid "Next"
+msgstr ""
+
+#: includes/controller/blogposts.php:1159
+#: includes/controller/modules/blog.php:2679
+#: includes/controller/modules/lightblog.php:2357
+msgid "All"
+msgstr ""
+
+#: includes/controller/blogposts.php:1184
+msgctxt "breadcrumb"
+msgid "Home"
+msgstr ""
+
+#: includes/controller/blogposts.php:1399
+#: includes/controller/blogposts.php:1453
+msgid "The used taxonomy slug is invalid. Check your settings."
+msgstr ""
+
+#: includes/controller/blogposts.php:1404
+msgid "Currently there are no categories to find. Please add some."
+msgstr ""
+
+#: includes/controller/blogposts.php:1458
+msgid "Currently there are no tags to find. Please add some."
+msgstr ""
+
+#: includes/controller/blogposts.php:1512
+msgid ""
+"There are no more posts for this category / tag. Please add another one.."
+msgstr ""
+
+#: includes/controller/initialize.php:74
+msgid ""
+"As described in the product description, the PHP version must be at least "
+"5.6 for this plugin to work."
+msgstr ""
+
+#: includes/controller/initialize.php:99
+msgid "The Divi Builder must be active for this plugin to work."
+msgstr ""
+
+#: includes/controller/initialize.php:106
+msgid " Error(s): "
+msgstr ""
+
+#: includes/controller/initialize.php:108
+msgid "The plugin has been disabled. Please fix the error(s) and try again."
+msgstr ""
+
+#: includes/controller/initialize.php:269
+msgid "During the update attempt the following error occurred: "
+msgstr ""
+
+#: includes/controller/modules/blog.php:197
+#: includes/controller/modules/blog.php:1126
+#: includes/controller/modules/lightblog.php:195
+#: includes/controller/modules/lightblog.php:857
+msgid "Layout"
+msgstr ""
+
+#: includes/controller/modules/blog.php:198
+#: includes/controller/modules/lightblog.php:196
+msgid "Background"
+msgstr ""
+
+#: includes/controller/modules/blog.php:199
+#: includes/controller/modules/blog.php:1232
+#: includes/controller/modules/lightblog.php:197
+#: includes/controller/modules/lightblog.php:963
+msgid "Featured Posts"
+msgstr ""
+
+#: includes/controller/modules/blog.php:200
+#: includes/controller/modules/lightblog.php:198
+msgid "Category Navigation"
+msgstr ""
+
+#: includes/controller/modules/blog.php:201
+#: includes/controller/modules/lightblog.php:199
+msgid "Post Options"
+msgstr ""
+
+#: includes/controller/modules/blog.php:202
+#: includes/controller/modules/lightblog.php:200
+msgid "Content Elements"
+msgstr ""
+
+#: includes/controller/modules/blog.php:203
+#: includes/controller/modules/lightblog.php:201
+msgid "Pagination / Add-More-Button"
+msgstr ""
+
+#: includes/controller/modules/blog.php:204
+#: includes/controller/modules/lightblog.php:202
+msgid "Overlay Settings"
+msgstr ""
+
+#: includes/controller/modules/blog.php:205
+#: includes/controller/modules/lightblog.php:203
+msgid "Lightbox Settings"
+msgstr ""
+
+#: includes/controller/modules/blog.php:206
+#: includes/controller/modules/lightblog.php:204
+msgid "Script Settings"
+msgstr ""
+
+#: includes/controller/modules/blog.php:207
+#: includes/controller/modules/lightblog.php:205
+msgid "Scroll Animation"
+msgstr ""
+
+#: includes/controller/modules/blog.php:212
+#: includes/controller/modules/lightblog.php:210
+msgid "Shadow Settings"
+msgstr ""
+
+#: includes/controller/modules/blog.php:214
+#: includes/controller/modules/lightblog.php:212
+msgid "Image"
+msgstr ""
+
+#: includes/controller/modules/blog.php:218
+#: includes/controller/modules/lightblog.php:216
+msgid "Text"
+msgstr ""
+
+#: includes/controller/modules/blog.php:228
+msgid "Body"
+msgstr ""
+
+#: includes/controller/modules/blog.php:249
+msgid "Header"
+msgstr ""
+
+#: includes/controller/modules/blog.php:270
+msgid "Meta"
+msgstr ""
+
+#: includes/controller/modules/blog.php:283
+msgid "Meta Link"
+msgstr ""
+
+#: includes/controller/modules/blog.php:299
+msgid "Post Content"
+msgstr ""
+
+#: includes/controller/modules/blog.php:316
+msgid "Pagination"
+msgstr ""
+
+#: includes/controller/modules/blog.php:341
+msgid "Pagination Current"
+msgstr ""
+
+#: includes/controller/modules/blog.php:363
+msgid "Body Filterable Posts"
+msgstr ""
+
+#: includes/controller/modules/blog.php:386
+msgid "Header Filterable Posts"
+msgstr ""
+
+#: includes/controller/modules/blog.php:407
+msgid "Meta Filterable Posts"
+msgstr ""
+
+#: includes/controller/modules/blog.php:420
+msgid "Meta Link Filterable Posts"
+msgstr ""
+
+#: includes/controller/modules/blog.php:436
+msgid "Post Content Filterable Posts"
+msgstr ""
+
+#: includes/controller/modules/blog.php:499
+msgid "Featured Posts - Read More Button"
+msgstr ""
+
+#: includes/controller/modules/blog.php:505
+msgid "Filterable Posts - Read More Button"
+msgstr ""
+
+#: includes/controller/modules/blog.php:511
+#: includes/controller/modules/blog.php:883
+#: includes/controller/modules/blog.php:1851
+#: includes/controller/modules/lightblog.php:552
+#: includes/controller/modules/lightblog.php:1582
+msgid "Add More Button"
+msgstr ""
+
+#: includes/controller/modules/blog.php:526
+msgid "Price"
+msgstr ""
+
+#: includes/controller/modules/blog.php:555
+msgid "Onsale"
+msgstr ""
+
+#: includes/controller/modules/blog.php:581
+msgid "Price Filterable Blogs"
+msgstr ""
+
+#: includes/controller/modules/blog.php:610
+msgid "Onsale Filterable Blogs"
+msgstr ""
+
+#: includes/controller/modules/blog.php:646
+#: includes/controller/modules/lightblog.php:275
+msgid "Featured Posts - Container"
+msgstr ""
+
+#: includes/controller/modules/blog.php:653
+#: includes/controller/modules/lightblog.php:282
+msgid "Featured Posts - Inner Article (Box Shadow)"
+msgstr ""
+
+#: includes/controller/modules/blog.php:660
+#: includes/controller/modules/lightblog.php:289
+msgid "Featured Posts - Overlay Content Container"
+msgstr ""
+
+#: includes/controller/modules/blog.php:669
+#: includes/controller/modules/lightblog.php:298
+msgid "Featured Posts - Overlay Content Container:Hover"
+msgstr ""
+
+#: includes/controller/modules/blog.php:678
+#: includes/controller/modules/lightblog.php:307
+msgid "Featured Posts - Header"
+msgstr ""
+
+#: includes/controller/modules/blog.php:685
+#: includes/controller/modules/lightblog.php:314
+msgid "Featured Posts - Overlay Header Click Icon"
+msgstr ""
+
+#: includes/controller/modules/blog.php:694
+#: includes/controller/modules/lightblog.php:323
+msgid "Featured Posts - Meta"
+msgstr ""
+
+#: includes/controller/modules/blog.php:701
+#: includes/controller/modules/lightblog.php:330
+msgid "Featured Posts - Meta Link"
+msgstr ""
+
+#: includes/controller/modules/blog.php:710
+#: includes/controller/modules/blog.php:839
+#: includes/controller/modules/lightblog.php:359
+#: includes/controller/modules/lightblog.php:508
+msgid "Filterable Posts - Featured Image / Gallery"
+msgstr ""
+
+#: includes/controller/modules/blog.php:719
+#: includes/controller/modules/lightblog.php:368
+msgid "Category Filter - Container"
+msgstr ""
+
+#: includes/controller/modules/blog.php:726
+#: includes/controller/modules/lightblog.php:375
+msgid "Category Filter - Active Category Display"
+msgstr ""
+
+#: includes/controller/modules/blog.php:733
+#: includes/controller/modules/lightblog.php:382
+msgid "Category Filter - Link Navigation Bar"
+msgstr ""
+
+#: includes/controller/modules/blog.php:742
+#: includes/controller/modules/lightblog.php:391
+msgid "Category Filter - Link Navigation Bar Active & Hover"
+msgstr ""
+
+#: includes/controller/modules/blog.php:752
+#: includes/controller/modules/lightblog.php:401
+msgid "Category Filter - Link Text Bar"
+msgstr ""
+
+#: includes/controller/modules/blog.php:759
+#: includes/controller/modules/lightblog.php:408
+msgid "Category Filter - Link Text Bar Active & Hover"
+msgstr ""
+
+#: includes/controller/modules/blog.php:768
+#: includes/controller/modules/lightblog.php:417
+msgid "Category Filter - Link Text Bar Separator"
+msgstr ""
+
+#: includes/controller/modules/blog.php:775
+#: includes/controller/modules/lightblog.php:424
+msgid "Filterable Posts - Container"
+msgstr ""
+
+#: includes/controller/modules/blog.php:782
+#: includes/controller/modules/lightblog.php:431
+msgid "Filterable Posts - Inner Article (Box Shadow)"
+msgstr ""
+
+#: includes/controller/modules/blog.php:789
+#: includes/controller/modules/lightblog.php:438
+msgid "Filterable Posts - Overlay Content Container"
+msgstr ""
+
+#: includes/controller/modules/blog.php:798
+#: includes/controller/modules/lightblog.php:447
+msgid "Filterable Posts - Overlay Content Container:Hover"
+msgstr ""
+
+#: includes/controller/modules/blog.php:807
+#: includes/controller/modules/lightblog.php:456
+msgid "Filterable Posts - Header"
+msgstr ""
+
+#: includes/controller/modules/blog.php:814
+#: includes/controller/modules/lightblog.php:463
+msgid "Filterable Posts - Overlay Header Click Icon"
+msgstr ""
+
+#: includes/controller/modules/blog.php:823
+#: includes/controller/modules/lightblog.php:472
+msgid "Filterable Posts - Meta"
+msgstr ""
+
+#: includes/controller/modules/blog.php:830
+#: includes/controller/modules/lightblog.php:479
+msgid "Filterable Posts - Meta Link"
+msgstr ""
+
+#: includes/controller/modules/blog.php:848
+#: includes/controller/modules/blog.php:1786
+#: includes/controller/modules/lightblog.php:517
+#: includes/controller/modules/lightblog.php:1517
+msgid "Read More Button"
+msgstr ""
+
+#: includes/controller/modules/blog.php:855
+#: includes/controller/modules/lightblog.php:524
+msgid "Read More Button::After"
+msgstr ""
+
+#: includes/controller/modules/blog.php:862
+#: includes/controller/modules/lightblog.php:531
+msgid "Read More Button:Hover"
+msgstr ""
+
+#: includes/controller/modules/blog.php:869
+#: includes/controller/modules/lightblog.php:538
+msgid "Read More Button:Hover::After"
+msgstr ""
+
+#: includes/controller/modules/blog.php:876
+#: includes/controller/modules/lightblog.php:545
+msgid "Add More Container"
+msgstr ""
+
+#: includes/controller/modules/blog.php:890
+#: includes/controller/modules/lightblog.php:559
+msgid "Add More Button::After"
+msgstr ""
+
+#: includes/controller/modules/blog.php:897
+#: includes/controller/modules/lightblog.php:566
+msgid "Add More Button:Hover"
+msgstr ""
+
+#: includes/controller/modules/blog.php:904
+#: includes/controller/modules/lightblog.php:573
+msgid "Add More Button:Hover::After"
+msgstr ""
+
+#: includes/controller/modules/blog.php:911
+#: includes/controller/modules/lightblog.php:580
+msgid "Pagination Container"
+msgstr ""
+
+#: includes/controller/modules/blog.php:918
+#: includes/controller/modules/lightblog.php:603
+msgid "Lightbox Header"
+msgstr ""
+
+#: includes/controller/modules/blog.php:927
+#: includes/controller/modules/lightblog.php:612
+msgid "Lightbox Close Link"
+msgstr ""
+
+#: includes/controller/modules/blog.php:937
+#: includes/controller/modules/lightblog.php:622
+msgid "Lightbox Close Link:Hover"
+msgstr ""
+
+#: includes/controller/modules/blog.php:947
+#: includes/controller/modules/lightblog.php:632
+msgid "Lightbox Title"
+msgstr ""
+
+#: includes/controller/modules/blog.php:956
+#: includes/controller/modules/lightblog.php:641
+msgid "Lightbox Title:Hover"
+msgstr ""
+
+#: includes/controller/modules/blog.php:965
+#: includes/controller/modules/lightblog.php:650
+msgid "Lightbox Read More"
+msgstr ""
+
+#: includes/controller/modules/blog.php:974
+#: includes/controller/modules/lightblog.php:659
+msgid "Lightbox Read More:Hover"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1002
+#: includes/controller/modules/lightblog.php:733
+msgid "Posttype"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1047
+#: includes/controller/modules/lightblog.php:778
+msgid "Select the posttype that you would like to use"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1057
+#: includes/controller/modules/blog.php:1089
+#: includes/controller/modules/lightblog.php:788
+#: includes/controller/modules/lightblog.php:820
+msgid "Include "
+msgstr ""
+
+#: includes/controller/modules/blog.php:1060
+#: includes/controller/modules/lightblog.php:791
+msgid ""
+"Select the categories you would like to include in the feed. If none is "
+"selected, all available categories are automatically included."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1073
+#: includes/controller/modules/blog.php:1105
+#: includes/controller/modules/lightblog.php:804
+#: includes/controller/modules/lightblog.php:836
+msgid "Exclude "
+msgstr ""
+
+#: includes/controller/modules/blog.php:1076
+#: includes/controller/modules/lightblog.php:807
+msgid "Select the categories you don't want to include in the feed."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1092
+#: includes/controller/modules/lightblog.php:823
+msgid ""
+"Select the tags you would like to include in the feed. If none is selected, "
+"all available tags are automatically included."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1108
+#: includes/controller/modules/lightblog.php:839
+msgid "Select the tags you don't want to include in the feed."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1130
+#: includes/controller/modules/lightblog.php:861
+msgid "Fullwidth"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1131
+#: includes/controller/modules/lightblog.php:862
+msgid "Masonry"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1138
+#: includes/controller/modules/lightblog.php:869
+msgid "Toggle between the various blog layout types."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1146
+#: includes/controller/modules/lightblog.php:877
+msgid "Content below the Image"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1150
+#: includes/controller/modules/blog.php:1216
+#: includes/controller/modules/blog.php:1269
+#: includes/controller/modules/blog.php:1326
+#: includes/controller/modules/blog.php:1391
+#: includes/controller/modules/blog.php:1445
+#: includes/controller/modules/blog.php:1459
+#: includes/controller/modules/blog.php:1496
+#: includes/controller/modules/blog.php:1549
+#: includes/controller/modules/blog.php:1587
+#: includes/controller/modules/blog.php:1602
+#: includes/controller/modules/blog.php:1619
+#: includes/controller/modules/blog.php:1657
+#: includes/controller/modules/blog.php:1672
+#: includes/controller/modules/blog.php:1698
+#: includes/controller/modules/blog.php:1750
+#: includes/controller/modules/blog.php:1766
+#: includes/controller/modules/blog.php:1821
+#: includes/controller/modules/blog.php:1882
+#: includes/controller/modules/blog.php:1968
+#: includes/controller/modules/blog.php:2070
+#: includes/controller/modules/blog.php:2085
+#: includes/controller/modules/lightblog.php:881
+#: includes/controller/modules/lightblog.php:947
+#: includes/controller/modules/lightblog.php:1000
+#: includes/controller/modules/lightblog.php:1057
+#: includes/controller/modules/lightblog.php:1122
+#: includes/controller/modules/lightblog.php:1176
+#: includes/controller/modules/lightblog.php:1190
+#: includes/controller/modules/lightblog.php:1227
+#: includes/controller/modules/lightblog.php:1280
+#: includes/controller/modules/lightblog.php:1318
+#: includes/controller/modules/lightblog.php:1333
+#: includes/controller/modules/lightblog.php:1350
+#: includes/controller/modules/lightblog.php:1388
+#: includes/controller/modules/lightblog.php:1403
+#: includes/controller/modules/lightblog.php:1429
+#: includes/controller/modules/lightblog.php:1481
+#: includes/controller/modules/lightblog.php:1497
+#: includes/controller/modules/lightblog.php:1552
+#: includes/controller/modules/lightblog.php:1613
+#: includes/controller/modules/lightblog.php:1699
+#: includes/controller/modules/lightblog.php:1801
+#: includes/controller/modules/lightblog.php:1816
+msgid "No"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1151
+#: includes/controller/modules/blog.php:1217
+#: includes/controller/modules/blog.php:1270
+#: includes/controller/modules/blog.php:1327
+#: includes/controller/modules/blog.php:1392
+#: includes/controller/modules/blog.php:1444
+#: includes/controller/modules/blog.php:1460
+#: includes/controller/modules/blog.php:1495
+#: includes/controller/modules/blog.php:1550
+#: includes/controller/modules/blog.php:1586
+#: includes/controller/modules/blog.php:1601
+#: includes/controller/modules/blog.php:1620
+#: includes/controller/modules/blog.php:1656
+#: includes/controller/modules/blog.php:1671
+#: includes/controller/modules/blog.php:1697
+#: includes/controller/modules/blog.php:1749
+#: includes/controller/modules/blog.php:1765
+#: includes/controller/modules/blog.php:1820
+#: includes/controller/modules/blog.php:1883
+#: includes/controller/modules/blog.php:1969
+#: includes/controller/modules/blog.php:2071
+#: includes/controller/modules/blog.php:2086
+#: includes/controller/modules/lightblog.php:882
+#: includes/controller/modules/lightblog.php:948
+#: includes/controller/modules/lightblog.php:1001
+#: includes/controller/modules/lightblog.php:1058
+#: includes/controller/modules/lightblog.php:1123
+#: includes/controller/modules/lightblog.php:1175
+#: includes/controller/modules/lightblog.php:1191
+#: includes/controller/modules/lightblog.php:1226
+#: includes/controller/modules/lightblog.php:1281
+#: includes/controller/modules/lightblog.php:1317
+#: includes/controller/modules/lightblog.php:1332
+#: includes/controller/modules/lightblog.php:1351
+#: includes/controller/modules/lightblog.php:1387
+#: includes/controller/modules/lightblog.php:1402
+#: includes/controller/modules/lightblog.php:1428
+#: includes/controller/modules/lightblog.php:1480
+#: includes/controller/modules/lightblog.php:1496
+#: includes/controller/modules/lightblog.php:1551
+#: includes/controller/modules/lightblog.php:1614
+#: includes/controller/modules/lightblog.php:1700
+#: includes/controller/modules/lightblog.php:1802
+#: includes/controller/modules/lightblog.php:1817
+msgid "Yes"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1153
+#: includes/controller/modules/lightblog.php:884
+msgid "This will show the content below the featured image."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1162
+#: includes/controller/modules/lightblog.php:893
+msgid "Article Distance"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1171
+#: includes/controller/modules/lightblog.php:902
+msgid ""
+"Define the space between the items in pixel for the featured- and the "
+"filterable posts."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1179
+#: includes/controller/modules/lightblog.php:910
+msgid "Maximum Columns"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1188
+#: includes/controller/modules/lightblog.php:919
+msgid "Define the maximum columns for your masonry-posts."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1197
+#: includes/controller/modules/lightblog.php:928
+msgid "Blog Post Animation"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1201
+#: includes/controller/modules/lightblog.php:932
+msgid "Screwed-In"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1202
+#: includes/controller/modules/lightblog.php:933
+msgid "Fade-In"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1204
+#: includes/controller/modules/lightblog.php:935
+msgid "Toggle between the various blog post animation types."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1212
+#: includes/controller/modules/lightblog.php:943
+msgid "Show Featured Posts"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1219
+#: includes/controller/modules/lightblog.php:950
+msgid "This will turn featured posts on and off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1235
+#: includes/controller/modules/lightblog.php:966
+msgid ""
+"Here you can paste the comma separated IDs of your featured posts (3 max). "
+"The posts are displayed in the order of the IDs."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1244
+#: includes/controller/modules/lightblog.php:975
+msgid "Featured Posts Overlay Color"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1247
+#: includes/controller/modules/lightblog.php:978
+msgid "Here you can define a custom color for the featured posts overlay."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1253
+#: includes/controller/modules/lightblog.php:984
+msgid "Show Layout Before Filterable Posts"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1256
+#: includes/controller/modules/lightblog.php:987
+msgid ""
+"Here you can paste a Layout-ID to display this layout between the fetaured- "
+"and the filterable posts."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1265
+#: includes/controller/modules/lightblog.php:996
+msgid "Show Category Filter"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1272
+#: includes/controller/modules/lightblog.php:1003
+msgid "This will turn the category filter on and off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1283
+#: includes/controller/modules/lightblog.php:1014
+msgid "Category Filter Style"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1287
+#: includes/controller/modules/lightblog.php:1018
+msgid "Navigation Bar"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1288
+#: includes/controller/modules/lightblog.php:1019
+msgid "Text with Seperators"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1291
+#: includes/controller/modules/lightblog.php:1022
+msgid "Choose between a navigation bar and a text style with a seperator."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1304
+#: includes/controller/modules/lightblog.php:1035
+msgid "Posts Number"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1313
+#: includes/controller/modules/lightblog.php:1044
+msgid "Define the number of blogs that should be displayed per page."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1322
+#: includes/controller/modules/lightblog.php:1053
+msgid "Show Order Options"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1329
+#: includes/controller/modules/lightblog.php:1060
+msgid "This will turn order options on and off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1341
+#: includes/controller/modules/lightblog.php:1072
+msgid "Order"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1345
+#: includes/controller/modules/lightblog.php:1076
+msgid "DESC"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1346
+#: includes/controller/modules/lightblog.php:1077
+msgid "ASC"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1348
+#: includes/controller/modules/lightblog.php:1079
+msgid ""
+"Toggle between DESC (from highest to lowest) and ASC (from lowest to "
+"highest)."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1356
+#: includes/controller/modules/lightblog.php:1087
+msgid "Orderby"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1360
+#: includes/controller/modules/lightblog.php:1091
+msgid "Date"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1361
+#: includes/controller/modules/lightblog.php:1092
+msgid "Title"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1362
+#: includes/controller/modules/lightblog.php:1093
+msgid "Author"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1363
+#: includes/controller/modules/lightblog.php:1094
+msgid "Comment Count"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1364
+#: includes/controller/modules/lightblog.php:1095
+msgid "Menu Order Title"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1365
+#: includes/controller/modules/lightblog.php:1096
+msgid "Modified"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1366
+#: includes/controller/modules/lightblog.php:1097
+msgid "Random"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1368
+#: includes/controller/modules/lightblog.php:1099
+msgid "Toggle between orderby parameters."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1376
+#: includes/controller/modules/lightblog.php:1107
+msgid "Offset Number"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1379
+#: includes/controller/modules/lightblog.php:1110
+msgid "Choose how many posts you would like to offset by."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1387
+#: includes/controller/modules/lightblog.php:1118
+msgid "Hide the Content"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1394
+#: includes/controller/modules/lightblog.php:1125
+msgid "This will turn the content below the image on and off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1402
+#: includes/controller/modules/lightblog.php:1133
+msgid "Content Background Color"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1405
+#: includes/controller/modules/lightblog.php:1136
+msgid "Here you can specify the background color of the content area."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1410
+#: includes/controller/modules/lightblog.php:1141
+msgid "Show Content as Overlay"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1414
+#: includes/controller/modules/blog.php:1791
+#: includes/controller/modules/blog.php:1898
+#: includes/controller/modules/blog.php:1952
+#: includes/controller/modules/blog.php:2141
+#: includes/controller/modules/blog.php:2155
+#: includes/controller/modules/blog.php:2185
+#: includes/controller/modules/lightblog.php:1145
+#: includes/controller/modules/lightblog.php:1522
+#: includes/controller/modules/lightblog.php:1629
+#: includes/controller/modules/lightblog.php:1683
+#: includes/controller/modules/lightblog.php:1872
+#: includes/controller/modules/lightblog.php:1886
+msgid "Off"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1415
+#: includes/controller/modules/blog.php:1790
+#: includes/controller/modules/blog.php:1899
+#: includes/controller/modules/blog.php:1953
+#: includes/controller/modules/blog.php:2140
+#: includes/controller/modules/blog.php:2156
+#: includes/controller/modules/blog.php:2186
+#: includes/controller/modules/lightblog.php:1146
+#: includes/controller/modules/lightblog.php:1521
+#: includes/controller/modules/lightblog.php:1630
+#: includes/controller/modules/lightblog.php:1684
+#: includes/controller/modules/lightblog.php:1871
+#: includes/controller/modules/lightblog.php:1887
+msgid "On"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1417
+#: includes/controller/modules/lightblog.php:1148
+msgid ""
+"If enabled, the content from the filterable posts will be used as overlay "
+"(like it is used for the featured posts)."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1425
+#: includes/controller/modules/lightblog.php:1156
+msgid "Content Overlay Event"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1429
+#: includes/controller/modules/lightblog.php:1160
+msgid "Click"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1430
+#: includes/controller/modules/lightblog.php:1161
+msgid "Hover"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1432
+#: includes/controller/modules/lightblog.php:1163
+msgid ""
+"Here you can specify whether the content overlay appears with a click or by "
+"hover."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1440
+#: includes/controller/modules/lightblog.php:1171
+msgid "Show Featured Image"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1447
+#: includes/controller/modules/lightblog.php:1178
+msgid "This will turn featured images on and off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1455
+#: includes/controller/modules/lightblog.php:1186
+msgid "Same Height for Images"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1462
+#: includes/controller/modules/lightblog.php:1193
+msgid "This will adjust the image height to a pre-defined value."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1474
+#: includes/controller/modules/lightblog.php:1205
+msgid "Image Height"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1483
+#: includes/controller/modules/lightblog.php:1214
+msgid "Define the height for the images in pixel."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1491
+#: includes/controller/modules/lightblog.php:1222
+msgid "Show Post Header"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1498
+#: includes/controller/modules/lightblog.php:1229
+msgid "Turn post header on and off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1509
+#: includes/controller/modules/lightblog.php:1240
+msgid "Post Header Tag"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1513
+#: includes/controller/modules/lightblog.php:1244
+msgid "h2"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1514
+#: includes/controller/modules/lightblog.php:1245
+msgid "h3"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1515
+#: includes/controller/modules/lightblog.php:1246
+msgid "h4"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1518
+#: includes/controller/modules/lightblog.php:1249
+msgid "Choose the tag to wrap your header."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1526
+#: includes/controller/modules/lightblog.php:1257
+msgid "Content"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1530
+#: includes/controller/modules/lightblog.php:1261
+msgid "Show Excerpt"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1531
+#: includes/controller/modules/lightblog.php:1262
+msgid "Show Content"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1532
+#: includes/controller/modules/lightblog.php:1263
+msgid "None"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1537
+#: includes/controller/modules/lightblog.php:1268
+msgid ""
+"Select whether the excerpt, the content, or neither should be displayed."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1545
+#: includes/controller/modules/lightblog.php:1276
+msgid "Content Limit"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1555
+#: includes/controller/modules/lightblog.php:1286
+msgid "Turn word count limit on and off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1564
+#: includes/controller/modules/lightblog.php:1295
+msgid "Content Word Count"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1573
+#: includes/controller/modules/lightblog.php:1304
+msgid "Limit the count of words from the content or excerpt."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1582
+#: includes/controller/modules/lightblog.php:1313
+msgid "Show Comment Count"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1589
+#: includes/controller/modules/lightblog.php:1320
+msgid "Turn comment count on and off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1597
+#: includes/controller/modules/lightblog.php:1328
+msgid "Show Categories"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1607
+#: includes/controller/modules/lightblog.php:1338
+msgid "Turn the category links on or off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1615
+#: includes/controller/modules/lightblog.php:1346
+msgid "Limit Categories"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1625
+#: includes/controller/modules/lightblog.php:1356
+msgid "Turn category count limit on and off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1634
+#: includes/controller/modules/lightblog.php:1365
+msgid "Category Count"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1643
+#: includes/controller/modules/lightblog.php:1374
+msgid "Limit the count of categories displayed in your posts."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1652
+#: includes/controller/modules/lightblog.php:1383
+msgid "Show Author"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1659
+#: includes/controller/modules/lightblog.php:1390
+msgid "Turn on or off the author link."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1667
+#: includes/controller/modules/lightblog.php:1398
+msgid "Show Date"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1674
+#: includes/controller/modules/lightblog.php:1405
+msgid "Turn the date on or off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1682
+#: includes/controller/modules/lightblog.php:1413
+msgid "Meta Date Format"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1685
+#: includes/controller/modules/lightblog.php:1416
+msgid ""
+"If you would like to adjust the date format, input the appropriate PHP date "
+"format here."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1693
+#: includes/controller/modules/lightblog.php:1424
+msgid "Show Rating Stars"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1700
+#: includes/controller/modules/lightblog.php:1431
+msgid "Turn product rating stars on or off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1709
+#: includes/controller/modules/lightblog.php:1440
+msgid "Star Rating Color"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1712
+#: includes/controller/modules/lightblog.php:1443
+msgid "Here you can define a custom color for the rating stars."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1718
+#: includes/controller/modules/lightblog.php:1449
+msgid "Star Rating Color Background"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1721
+#: includes/controller/modules/lightblog.php:1452
+msgid "Here you can define a custom color for the rating stars background."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1727
+#: includes/controller/modules/lightblog.php:1458
+msgid "Filterable Blogs Star Rating Color"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1730
+#: includes/controller/modules/lightblog.php:1461
+msgid ""
+"Here you can define a custom color for the filterable blogs rating stars."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1736
+#: includes/controller/modules/lightblog.php:1467
+msgid "Filterable Blogs Star Rating Color Background"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1739
+#: includes/controller/modules/lightblog.php:1470
+msgid ""
+"Here you can define a custom color for the filterable blogs rating stars "
+"background."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1745
+#: includes/controller/modules/lightblog.php:1476
+msgid "Show Price"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1752
+#: includes/controller/modules/lightblog.php:1483
+msgid "Turn the price on or off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1761
+#: includes/controller/modules/lightblog.php:1492
+msgid "Show Add to Cart Icon"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1768
+#: includes/controller/modules/lightblog.php:1499
+msgid "Turn the add to card icon for simple products on or off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1777
+#: includes/controller/modules/lightblog.php:1508
+msgid "Add to Cart Icon Color"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1780
+#: includes/controller/modules/lightblog.php:1511
+msgid "Here you can define a custom color for the add to card icon."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1796
+#: includes/controller/modules/lightblog.php:1527
+msgid "Here you can define whether to show \"read more\" button or not."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1804
+#: includes/controller/modules/lightblog.php:1535
+msgid "Change the text \"Read More\""
+msgstr ""
+
+#: includes/controller/modules/blog.php:1807
+#: includes/controller/modules/lightblog.php:1538
+msgid ""
+"Here you can change the text \"Read More\" for the buttons of the individual "
+"post items and for the lightbox. Just leave the field blank if you want to "
+"use the standard text or change the text using the translation file."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1816
+#: includes/controller/modules/lightblog.php:1547
+msgid "Show Pagination / Add More"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1838
+#: includes/controller/modules/lightblog.php:1569
+msgid "Add pagination or an \"add more\" button."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1846
+#: includes/controller/modules/lightblog.php:1577
+msgid "Pagination or Add more"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1850
+#: includes/controller/modules/lightblog.php:1581
+msgid "Show Pagination"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1858
+#: includes/controller/modules/lightblog.php:1589
+msgid "Toggle between pagination and an \"add more\" button."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1866
+#: includes/controller/modules/lightblog.php:1597
+msgid "Change the text \"Add More Posts\""
+msgstr ""
+
+#: includes/controller/modules/blog.php:1869
+#: includes/controller/modules/lightblog.php:1600
+msgid ""
+"Here you can change the text \"Add More Posts\" for the \"add more\" button. "
+"Just leave the field blank if you want to use the standard text or change "
+"the text using the translation file."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1878
+#: includes/controller/modules/lightblog.php:1609
+msgid "Fullwidth Add More Button"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1886
+#: includes/controller/modules/lightblog.php:1617
+msgid "Set \"add more\" button to fullwidth."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1894
+#: includes/controller/modules/lightblog.php:1625
+msgid "Featured Image Overlay"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1907
+#: includes/controller/modules/lightblog.php:1638
+msgid ""
+"If enabled, an overlay and icon will be displayed when a visitors hovers "
+"over the featured image of a post."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1915
+#: includes/controller/modules/lightblog.php:1646
+msgid "Overlay Icon Color"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1919
+#: includes/controller/modules/lightblog.php:1650
+msgid "Here you can define a custom color for the overlay icon."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1924
+#: includes/controller/modules/lightblog.php:1655
+msgid "Hover Overlay Color"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1928
+#: includes/controller/modules/lightblog.php:1659
+msgid "Here you can define a custom color for the overlay."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1933
+#: includes/controller/modules/lightblog.php:1664
+msgid "Hover Icon Picker"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1940
+#: includes/controller/modules/lightblog.php:1671
+msgid "Here you can define a custom icon for the overlay."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1948
+#: includes/controller/modules/lightblog.php:1679
+msgid "Overlay Featured Posts"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1955
+#: includes/controller/modules/lightblog.php:1686
+msgid "Here you can also activate the overlays for featured posts."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1964
+#: includes/controller/modules/lightblog.php:1695
+msgid "Use Lightbox"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1971
+#: includes/controller/modules/lightblog.php:1702
+msgid "Turn the lightbox on or off."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1986
+#: includes/controller/modules/lightblog.php:1717
+msgid "Lightbox Background Color"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1989
+#: includes/controller/modules/lightblog.php:1720
+msgid "Here you can define a custom color for the lightbox background."
+msgstr ""
+
+#: includes/controller/modules/blog.php:1995
+#: includes/controller/modules/lightblog.php:1726
+msgid "Lightbox Header Text"
+msgstr ""
+
+#: includes/controller/modules/blog.php:1998
+#: includes/controller/modules/lightblog.php:1729
+msgid "Here you can define the header-text for the lightbox."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2007
+#: includes/controller/modules/lightblog.php:1738
+msgid "Lightbox Close Text"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2010
+#: includes/controller/modules/lightblog.php:1741
+msgid ""
+"Here you can define the text next to the close-icon for the lightbox. "
+"Default: Close."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2019
+#: includes/controller/modules/lightblog.php:1750
+msgid "Lightbox Content Width"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2028
+#: includes/controller/modules/lightblog.php:1759
+msgid ""
+"Here you can define the width of the lightbox content in percent (max 99%)."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2038
+#: includes/controller/modules/lightblog.php:1769
+msgid "Lightbox Image Position"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2042
+#: includes/controller/modules/lightblog.php:1773
+msgid "Center"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2043
+#: includes/controller/modules/lightblog.php:1774
+msgid "Top"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2044
+#: includes/controller/modules/lightblog.php:1775
+msgid "Bottom"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2046
+#: includes/controller/modules/lightblog.php:1777
+msgid "Here you can choose, how your images are positioned in the lightbox."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2055
+#: includes/controller/modules/lightblog.php:1786
+msgid "CDN Origin"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2058
+#: includes/controller/modules/lightblog.php:1789
+msgid ""
+"Here you must paste your CDN-Origin, if you use a CDN-Service for embedded "
+"videos and images ( eg. cdn.my-domain.com ). Without the protocoll and "
+"slashes."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2066
+#: includes/controller/modules/lightblog.php:1797
+msgid "Video / Audio in Feed"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2073
+#: includes/controller/modules/lightblog.php:1804
+msgid ""
+"If there are videos- or audio-posts in your defined feed, turn this on to "
+"ensure proper functionality. Otherwise, you will get a javascript error."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2081
+#: includes/controller/modules/lightblog.php:1812
+msgid "Scroll Animation Offset"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2088
+#: includes/controller/modules/lightblog.php:1819
+msgid ""
+"Enable scroll animation offset. The default value corresponds to your header "
+"height. But it can be usefull to redefine it for shrinked headers."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2100
+#: includes/controller/modules/lightblog.php:1831
+msgid "Animation Offset Height"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2109
+#: includes/controller/modules/lightblog.php:1840
+msgid "Here you can define the scroll animation offset height."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2118
+#: includes/controller/modules/lightblog.php:1849
+msgid "Animation Offset Height Mobile"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2127
+#: includes/controller/modules/lightblog.php:1858
+msgid ""
+"Here you can define the scroll animation offset height for mobile Devices."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2136
+#: includes/controller/modules/lightblog.php:1867
+msgid "Use Standard Inner Shadow"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2143
+#: includes/controller/modules/lightblog.php:1874
+msgid ""
+"Here you can add a smooth inner 1px box shadow without blur. But you can "
+"also define it in the custom-css settings according to your needs."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2151
+#: includes/controller/modules/lightblog.php:1882
+msgid "Use Dropshadow"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2158
+#: includes/controller/modules/lightblog.php:1889
+msgid "Here you can add a smooth drop shadow to your posts."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2166
+#: includes/controller/modules/lightblog.php:1897
+msgid "Text Color"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2170
+#: includes/controller/modules/lightblog.php:1901
+msgid "Dark"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2171
+#: includes/controller/modules/lightblog.php:1902
+msgid "Light"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2173
+#: includes/controller/modules/lightblog.php:1904
+msgid ""
+"Here you can choose whether your text should be light or dark. If you are "
+"working with a dark background, then your text should be light. If your "
+"background is light, then your text should be set to dark."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2181
+msgid "Independent Fonts"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2226
+msgid ""
+"If you want to style the fonts from the featured post and the filterable "
+"posts independently, you can activate this setting. Please note, that the "
+"first font-set below will work for both. With the second font-set you can "
+"adjust (and override) the styles for the filerable posts."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2234
+#: includes/controller/modules/lightblog.php:1912
+msgid "Disable on"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2237
+#: includes/controller/modules/lightblog.php:1915
+msgid "Phone"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2238
+#: includes/controller/modules/lightblog.php:1916
+msgid "Tablet"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2239
+#: includes/controller/modules/lightblog.php:1917
+msgid "Desktop"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2243
+#: includes/controller/modules/lightblog.php:1921
+msgid "This will disable the module on selected devices"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2248
+#: includes/controller/modules/lightblog.php:1926
+msgid "Admin Label"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2250
+#: includes/controller/modules/lightblog.php:1928
+msgid ""
+"This will change the label of the module in the builder for easy "
+"identification."
+msgstr ""
+
+#: includes/controller/modules/blog.php:2254
+#: includes/controller/modules/lightblog.php:1932
+msgid "CSS ID"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2262
+#: includes/controller/modules/lightblog.php:1940
+msgid "CSS Class"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2348
+#: includes/controller/modules/lightblog.php:2026
+msgid "Read More"
+msgstr ""
+
+#: includes/controller/modules/blog.php:2350
+#: includes/controller/modules/lightblog.php:2028
+msgid "Add More Posts"
+msgstr ""
+
+#: includes/controller/modules/lightblog.php:339
+msgid "Featured Posts - Post Content"
+msgstr ""
+
+#: includes/controller/modules/lightblog.php:348
+#: includes/controller/modules/lightblog.php:497
+msgid "Featured Posts - Post Body"
+msgstr ""
+
+#: includes/controller/modules/lightblog.php:488
+msgid "Filterable Posts - Post Content"
+msgstr ""
+
+#: includes/controller/modules/lightblog.php:587
+msgid "Pagination Text"
+msgstr ""
+
+#: includes/controller/modules/lightblog.php:596
+msgid "Pagination Text Current"
+msgstr ""
+
+#: includes/controller/modules/lightblog.php:668
+msgid "WooCommerce Price Text"
+msgstr ""
+
+#: includes/controller/modules/lightblog.php:681
+msgid "WooCommerce Onsale Text"
+msgstr ""
+
+#: includes/controller/modules/lightblog.php:691
+msgid "WooCommerce Price Text - Filterable Blogs"
+msgstr ""
+
+#: includes/controller/modules/lightblog.php:704
+msgid "WooCommerce Onsale Text - Filterable Blogs"
+msgstr ""
+
+#: includes/controller/settings.php:115
+msgid "Filterable Blogs Search"
+msgstr ""
+
+#: includes/controller/settings.php:119
+msgid "Enable \"Divi - Filerable Blogs Module\" for your search-archives."
+msgstr ""
+
+#: includes/controller/settings.php:125
+msgid "Filterable Blogs Author"
+msgstr ""
+
+#: includes/controller/settings.php:129
+msgid "Enable \"Divi - Filerable Blogs Module\" for your author-archives."
+msgstr ""
+
+#: includes/controller/settings.php:135
+msgid "Filterable Blogs Archives"
+msgstr ""
+
+#: includes/controller/settings.php:139
+msgid ""
+"Enable \"Divi - Filerable Blogs Module\" for your category- and tag-archives."
+msgstr ""
+
+#: includes/controller/settings.php:151
+msgid "Filterable Blogs WooCommerce"
+msgstr ""
+
+#: includes/controller/settings.php:155
+msgid ""
+"Enable \"Divi - Filerable Blogs Module\" for your WooCommerce shop-archives."
+msgstr ""
+
+#: includes/controller/settings.php:164
+msgid "Filterable Blogs Light Layouts"
+msgstr ""
+
+#: includes/controller/settings.php:168
+msgid ""
+"Enable the \"Divi - Filterable Blog Module Light\" layouts for your search, "
+"author, category, tag and WooCommerce archives."
+msgstr ""
+
+#: includes/controller/settings.php:175
+msgid "Filterable Blogs Uninstall"
+msgstr ""
+
+#: includes/controller/settings.php:179
+msgid ""
+"Delete all \"Divi - Filterable Blog Module\" datas on uninstall. This "
+"operation can not be undone. Please note that you must manually delete the "
+"module shortcodes added to your posts. You should do this before "
+"uninstalling the plugin. You can use the shortcode-finder, that is linked "
+"below, to find the posts where the shortcodes were added: "
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: includes/trait/constants.php:93
+msgid "Divi - Filterable Blog Module"
+msgstr ""
+
+#: includes/trait/constants.php:97
+msgid "Divi - Filterable Blog Module Light"
+msgstr ""
+
+#: includes/update/Puc/v4p4/Plugin/UpdateChecker.php:395
+msgid "Check for updates"
+msgstr ""
+
+#: includes/update/Puc/v4p4/Plugin/UpdateChecker.php:432
+msgid "View details"
+msgstr ""
+
+#: includes/update/Puc/v4p4/Plugin/UpdateChecker.php:455
+#, php-format
+msgid "More information about %s"
+msgstr ""
+
+#: includes/update/Puc/v4p4/Plugin/UpdateChecker.php:548
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr ""
+
+#: includes/update/Puc/v4p4/Plugin/UpdateChecker.php:550
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr ""
+
+#: includes/update/Puc/v4p4/Plugin/UpdateChecker.php:552
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr ""
+
+#: includes/update/Puc/v4p4/Plugin/UpdateChecker.php:558
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr ""
+
+#: includes/update/Puc/v4p4/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://indikator-design.com/bring-your-divi-blog-to-the-next-level/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A Filterable Blog Module for Divi, based on ajax techniques."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Bruno Bouyajdad | Indikator Design"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://indikator-design.com"
+msgstr ""

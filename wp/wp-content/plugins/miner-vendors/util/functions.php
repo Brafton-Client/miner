@@ -30,7 +30,7 @@ function vendor_setup_post_type() {
         'query_var'          => true,
         'capability_type'    => 'post',
         'has_archive'        => true,
-        'hierarchical'       => true,
+//         'hierarchical'       => true,
         'menu_position'      => null,
         'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'taxonomies' ),
     );

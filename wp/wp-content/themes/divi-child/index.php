@@ -12,34 +12,87 @@ $sticky_resources_parameters = array(
 
 );
 $sticky_resources = new WP_Query($sticky_resources_parameters);
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+$filters = $_GET;
+$tax_query = null;
 
+
+	if(isset($filters['content-type'])){
+		$tax_query[] = array( 
+			'taxonomy'	=> 'content-type',
+			'field'		=> 'slug',
+			'terms'		=> array($filters['content-type'])
+		);
+	}
+	if(isset($filters['product'])){
+		$tax_query[] = array( 
+			'taxonomy'	=> 'category',
+			'field'		=> 'slug',
+			'terms'		=> array($filters['product'])
+		);
+	}
+	if(isset($filters['industry'])){
+		$tax_query[] = array( 
+			'taxonomy'	=> 'industry',
+			'field'		=> 'slug',
+			'terms'		=> array($filters['industry'])
+		);
+	}
+if($tax_query && count($tax_query) > 1){
+	$tax_query['relation'] = 'AND';
+}
 $resources_parameters = array(
 	'post_type'	=> 'post',
 	'posts_per_page'	=> 8,
 	'post__not_in'	=> $sticky,
-	'ignore_sticky_posts'	=> 1
+	'ignore_sticky_posts'	=> 1,
+	'paged'	=> $paged
 	);
+if(isset($filters['s']) && $tax_query == null){
+	$resources_parameters['s'] = $filters['s'];
+}
+if($tax_query){
+	$resources_parameters['tax_query'] = $tax_query;
+}
 $resources = new WP_Query($resources_parameters);
 
+$content_types = get_terms('content-type');
+$products = get_terms('category');
+$industries = get_terms('industry');
+function minerSelectedValue($value, $slug){
+	if($value == $slug){
+		echo 'selected';
+	}
+}
 ?>
 
 <div id="main-content">
     <div class="filter-criteria">
         <div class="container">
-            <form class="filters">
+            <form id="filters" class="filters" method="get" >
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/red-triangle.svg" class="embelish"/>
                 <div class="filter">
                     <select class="content-type" name="content-type" value="">
-                        <option value="">eBooks</option>
+						<option value="">Content Type</option>
+						<?php foreach($content_types as $content_type){?>
+							<option <?php minerSelectedValue($filters['content-type'], $content_type->slug); ?> value="<?php echo $content_type->slug; ?>"><?php echo $content_type->name; ?></option>
+						<?php } ?>
                     </select>
                 </div>
                 <div class="filter">
                     <select class="product" name="product" value="">
-                        <option value="">Docks</option>
+												<option value="">Product</option>
+					<?php foreach($products as $product){?>
+							<option <?php minerSelectedValue($filters['product'], $product->slug); ?> value="<?php echo $product->slug; ?>"><?php echo $product->name; ?></option>
+						<?php } ?>
                     </select>
                 </div>
                 <div class="filter">
                     <select class="industry" name="industry" value="">
-                        <option value="">Oil</option>
+											<option value="">Industry</option>
+					<?php foreach($industries as $industry){?>
+							<option <?php minerSelectedValue($filters['industry'], $industry->slug); ?> value="<?php echo $industry->slug; ?>"><?php echo $industry->name; ?></option>
+						<?php } ?>
                     </select>
                 </div>
             </form>
@@ -52,7 +105,7 @@ $resources = new WP_Query($resources_parameters);
 	</div>
 	<?php if( $sticky_resources->have_posts()){ ?>
 	<div class="featured-resources">
-		<div class="container">
+		<div class="container items">
 			<h2>Featured Items</h2>
 			<?php while ( $sticky_resources->have_posts() ) { $sticky_resources->the_post(); 
 				
@@ -83,72 +136,38 @@ $resources = new WP_Query($resources_parameters);
 		</div>
 	</div>
 	<?php } ?>
-    <div class="container">
-        <div id="content-area" class="clearfix">
+    <div class="container items">
+        <!-- <div id="content-area" class="clearfix"> -->
 
             <?php
 			if ( $resources->have_posts() ) :
 				while ( $resources->have_posts() ) : $resources->the_post();
 					$post_format = et_pb_post_format(); ?>
 
-            <article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
-
-                <?php
-					$thumb = '';
-
-					$width = (int) apply_filters( 'et_pb_index_blog_image_width', 1080 );
-
-					$height    = (int) apply_filters( 'et_pb_index_blog_image_height', 675 );
-					$classtext = 'et_pb_post_main_image';
-					$titletext = get_the_title();
-					$alttext   = get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true );
-					$thumbnail = get_thumbnail( $width, $height, $classtext, $alttext, $titletext, false, 'Blogimage' );
-					$thumb     = $thumbnail["thumb"];
-
-					et_divi_post_format_content();
-
-					if ( ! in_array( $post_format, array( 'link', 'audio', 'quote' ) ) ) {
-						if ( 'video' === $post_format && false !== ( $first_video = et_get_first_video() ) ) :
-							printf(
-								'<div class="et_main_video_container">
-									%1$s
-								</div>',
-								et_core_esc_previously( $first_video )
-							);
-						elseif ( ! in_array( $post_format, array( 'gallery' ) ) && 'on' === et_get_option( 'divi_thumbnails_index', 'on' ) && '' !== $thumb ) : ?>
-                <a class="entry-featured-image-url" href="<?php the_permalink(); ?>">
-                    <?php print_thumbnail( $thumb, $thumbnail["use_timthumb"], $titletext, $width, $height ); ?>
-                </a>
-                <?php
-						elseif ( 'gallery' === $post_format ) :
-							et_pb_gallery_images();
-						endif;
-					} ?>
-
-                <?php if ( ! in_array( $post_format, array( 'link', 'audio', 'quote' ) ) ) : ?>
-                <?php if ( ! in_array( $post_format, array( 'link', 'audio' ) ) ) : ?>
-                <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> </h2>
-                <?php endif; ?>
-
-                <?php
-						et_divi_post_meta();
-
-						if ( 'on' !== et_get_option( 'divi_blog_style', 'false' ) || ( is_search() && ( 'on' === get_post_meta( get_the_ID(), '_et_pb_use_builder', true ) ) ) ) {
-							truncate_post( 270 );
-						} else {
-							the_content();
+			<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?> >
+					<div class="featured-image">
+						<?php the_post_thumbnail('full'); ?>
+						<div class="shadow">
+							
+						</div>
+					</div>
+				<?php $cats = get_the_category();
+				if($cats){
+					$count = count($cats);
+					echo '<p>';
+					foreach($cats as $cat){
+						echo $cat->name;
+						$count--;
+						if($count > 0){
+							echo ', ';
 						}
-					?>
-                <?php endif; ?>
-
-            </article> <!-- .et_pb_post -->
+					}
+					echo '</p>';
+				} ?>
+				<a class="title" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+				</article> <!-- .et_pb_post -->
             <?php
 					endwhile;
-
-					if ( function_exists( 'wp_pagenavi' ) )
-						wp_pagenavi();
-					else
-						get_template_part( 'includes/navigation', 'index' );
 				else :
 					get_template_part( 'includes/no-results', 'index' );
 				endif;
@@ -156,8 +175,26 @@ $resources = new WP_Query($resources_parameters);
 
 
 
-        </div> <!-- #content-area -->
-    </div> <!-- .container -->
+		<!-- </div> #content-area -->
+		<?php 
+	$bignum = 999999999;
+	if ( $resources->max_num_pages <= 1 )
+	  return;
+	echo '<nav class="pagination">';
+	echo paginate_links( array(
+	  'format'       => 'page/%#%',
+	  'current'      => max( 1, get_query_var('paged') ),
+	  'total'        => $resources->max_num_pages,
+	  'prev_text'    => '',
+	  'next_text'    => 'Next',
+	  'type'         => 'list',
+	  'end_size'     => 1,
+	  'mid_size'     => 1,
+	//   'add_fragment'	=> '?content_type=books'
+	) );
+	echo '</nav>';
+	?>
+	</div> <!-- .container -->
 </div> <!-- #main-content -->
 
 <?php

@@ -1,6 +1,7 @@
 .wp-cli
 .sass-cache
 node_modules
+db_data
 /wp/*
 !/wp/wp-content
 wp/wp-content/index.php

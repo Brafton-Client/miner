@@ -142,7 +142,7 @@ function minerSelectedValue($value, $slug){
             <?php
 			if ( $resources->have_posts() ) :
 				while ( $resources->have_posts() ) : $resources->the_post();
-					$post_format = et_pb_post_format(); ?>
+					 ?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?> >
 					<div class="featured-image">
@@ -178,21 +178,21 @@ function minerSelectedValue($value, $slug){
 		<!-- </div> #content-area -->
 		<?php 
 	$bignum = 999999999;
-	if ( $resources->max_num_pages <= 1 )
-	  return;
-	echo '<nav class="pagination">';
-	echo paginate_links( array(
-	  'format'       => 'page/%#%',
-	  'current'      => max( 1, get_query_var('paged') ),
-	  'total'        => $resources->max_num_pages,
-	  'prev_text'    => '',
-	  'next_text'    => 'Next',
-	  'type'         => 'list',
-	  'end_size'     => 1,
-	  'mid_size'     => 1,
-	//   'add_fragment'	=> '?content_type=books'
-	) );
-	echo '</nav>';
+	if ( $resources->max_num_pages <= 1 ){
+		echo '<nav class="pagination">';
+		echo paginate_links( array(
+		'format'       => 'page/%#%',
+		'current'      => max( 1, get_query_var('paged') ),
+		'total'        => $resources->max_num_pages,
+		'prev_text'    => '',
+		'next_text'    => 'Next',
+		'type'         => 'list',
+		'end_size'     => 1,
+		'mid_size'     => 1,
+		//   'add_fragment'	=> '?content_type=books'
+		) );
+		echo '</nav>';
+	}
 	?>
 	</div> <!-- .container -->
 </div> <!-- #main-content -->
